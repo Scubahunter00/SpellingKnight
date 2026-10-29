@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spelling Knight</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game"></canvas>
+  <button id="mute" class="btn small" title="Music on/off (M)">🎵</button>
+
+  <div id="panel" hidden>
+    <div id="clue">
+      <button id="hearWord" class="btn small">🔊 Word</button>
+      <button id="hearSentence" class="btn small">🔊 Sentence</button>
+      <span id="sentence"></span>
+    </div>
+    <div id="timer"><div id="timerFill"></div><span id="timerLabel"></span></div>
+    <div id="slots"></div>
+    <div id="kb"></div>
+  </div>
+
+  <div id="wardrobe" hidden>
+    <div id="wTop">
+      <h2>Dress-Up</h2>
+      <span id="wGold"></span>
+      <button id="wClose" class="btn small">Done</button>
+    </div>
+    <div id="wBody">
+      <div id="wLeft"><canvas id="wPreview" width="24" height="24"></canvas><div id="wMsg"></div></div>
+      <div id="wRight"><div id="wTabs"></div><div id="wGrid"></div></div>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <h1 id="ovTitle"></h1>
+    <div id="ovBody"></div>
+    <div id="ovMenu"></div>
+  </div>
+</div>
+<script src="words.js"></script>
+<script src="words-grades.js"></script>
+  <script src="sentences.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

@@ -24,6 +24,8 @@ body { font-family: 'Press Start 2P', 'Courier New', monospace; color: #f4f4f4; 
 .btn.small { font-size: 12px; padding: 10px 12px; }
 #mute { position: absolute; left: 10px; top: 76px; z-index: 5; padding: 6px 8px; font-size: 14px; }
 
+#masteryBtn { position: absolute; left: 10px; top: 122px; z-index: 5; padding: 6px 8px; font-size: 14px; }
+
 #panel {
   position: absolute; left: 0; right: 0; bottom: 0;
   background: rgba(26, 28, 44, .96);
@@ -90,6 +92,29 @@ body { font-family: 'Press Start 2P', 'Courier New', monospace; color: #f4f4f4; 
 .cname { font-size: 9px; }
 .cstat { font-size: 9px; color: #ffd23f; }
 .card.poor .cstat { color: #ff6b6b; }
+
+#mastery {
+  position: absolute; inset: 0; z-index: 10; background: #0d0e17;
+  display: flex; flex-direction: column; padding: 24px 32px; gap: 16px;
+}
+#mastery[hidden] { display: none; }
+#mTop { display: flex; align-items: center; gap: 24px; }
+#mTop h2 { margin: 0; font-size: 26px; color: #ffcd75; text-shadow: 3px 3px 0 #b13e53; flex: 1; }
+#mSummary { font-size: 14px; color: #ffd23f; }
+#mTabs { display: flex; gap: 8px; }
+#mList { flex: 1; min-height: 0; overflow-y: auto; padding-right: 8px; scrollbar-color: #566c86 #1a1c2c; }
+#mList h3 { margin: 16px 0 10px; font-size: 12px; font-weight: normal; color: #ffcd75; }
+#mList h3:first-child { margin-top: 0; }
+.mgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.mcard { display: flex; flex-direction: column; gap: 8px; padding: 10px; background: #333c57; border: 3px solid transparent; }
+.mcard.done { border-color: #ffcd75; }
+.mword { font-size: 11px; line-height: 1.3; }
+.mbar { display: flex; gap: 3px; height: 10px; }
+.mbar i { flex: 1; background: #1a1c2c; }
+.mbar i.on { background: #7df9ff; }
+.mcard.done .mbar i.on { background: #ffcd75; }
+.mstatus { font-size: 9px; color: #c0cbdc; }
+.mcard.done .mstatus { color: #ffcd75; }
 
 #overlay {
   position: absolute; inset: 0;

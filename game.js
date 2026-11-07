@@ -635,18 +635,70 @@ function toggleMute() {
   b.textContent = music.muted ? '\u{1F507}' : '\u{1F3B5}'; b.blur();
 }
 
-function say(text) {
+// ---------- voice ----------
+// Plays the pre-recorded clip for the text (see tools/voice). Anything without a clip,
+// such as words from the backend, uses the best voice the browser has.
+const clipPlayer = new Audio();
+const clipKey = text => text.trim().toLowerCase();   // must match keyOf in tools/voice/generate.mjs
+let sayId = 0;   // bumped by each say(), so anything still pending from an older one can tell
+
+// A moment of silence, played on the first tap: iPads only let an audio element play
+// on its own later if it has already played during a user gesture.
+const SILENCE = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAAAA';
+let voiceUnlocked = false;
+function unlockVoice() {
+  if (voiceUnlocked) return;
+  voiceUnlocked = true;
+  clipPlayer.src = SILENCE;
+  clipPlayer.play().catch(() => {});
+}
+addEventListener('pointerdown', unlockVoice);
+addEventListener('keydown', unlockVoice);
+
+function voiceScore(v) {
+  let score = /^en[-_]US/i.test(v.lang) ? 50 : 0;
+  if (/natural/i.test(v.name)) score += 100;                       // Edge's neural voices
+  else if (/premium|enhanced|neural/i.test(v.name)) score += 70;   // Apple's better downloads
+  else if (/google/i.test(v.name)) score += 60;
+  else if (/samantha|allison|\bava\b/i.test(v.name)) score += 40;
+  return score;
+}
+const failedVoices = new Set();
+function bestVoice() {
+  return speechSynthesis.getVoices()
+    .filter(v => /^en/i.test(v.lang) && !failedVoices.has(v.name))
+    .sort((a, b) => voiceScore(b) - voiceScore(a))[0];
+}
+if ('speechSynthesis' in window) speechSynthesis.getVoices();   // voices load on first ask
+
+function speakWithBrowser(text, id) {
   if (!('speechSynthesis' in window)) return;
-  if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
-  if (!text) return;
   const u = new SpeechSynthesisUtterance(text);
   u.rate = 0.8; u.lang = 'en-US';
-  const v = speechSynthesis.getVoices().find(v => /^en[-_]US/i.test(v.lang)) ||
-            speechSynthesis.getVoices().find(v => /^en/i.test(v.lang));
+  const v = bestVoice();
   if (v) u.voice = v;
+  // The best voices are online ones, so step down to the next if one can't be reached.
+  u.onerror = e => {
+    if (id !== sayId || e.error === 'canceled' || e.error === 'interrupted') return;
+    if (v && !v.localService) { failedVoices.add(v.name); speakWithBrowser(text, id); }
+  };
   speechSynthesis.resume();
   // Chrome can drop a speak() issued in the same tick as cancel()
-  setTimeout(() => speechSynthesis.speak(u), 60);
+  setTimeout(() => { if (id === sayId) speechSynthesis.speak(u); }, 60);
+}
+
+function say(text) {
+  const id = ++sayId;
+  clipPlayer.pause();
+  if ('speechSynthesis' in window && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  if (!text) return;
+  const clip = window.VOICE_CLIPS && window.VOICE_CLIPS[clipKey(text)];
+  if (!clip) { speakWithBrowser(text, id); return; }
+  clipPlayer.src = 'audio/voice/' + clip;
+  clipPlayer.play().catch(e => {
+    // AbortError only means a newer say() interrupted this one.
+    if (id === sayId && e.name !== 'AbortError') speakWithBrowser(text, id);
+  });
 }
 
 // ---------- words ----------
@@ -715,6 +767,27 @@ function persist() {
   try { localStorage.setItem(SAVE_KEY, json); } catch (e) { /* storage unavailable */ }
 }
 let save = loadSave();
+
+// Each word's score, from 0 to MASTERED. Words keep their score in every grade and every run.
+// Stored apart from the save, which also goes in a cookie: a score for every word would pass
+// the 4 KB cookie limit, the browser would reject it, and the next load would read a stale save.
+const MASTERY_KEY = 'spellingKnightMastery', MASTERED = 5;
+function loadMastery() {
+  try {
+    const m = JSON.parse(localStorage.getItem(MASTERY_KEY));
+    if (m && typeof m === 'object' && !Array.isArray(m)) return m;
+  } catch (e) { /* start with no scores */ }
+  return {};
+}
+let mastery = loadMastery();
+const masteryOf = word => Math.min(MASTERED, Math.max(0, Math.floor(Number(mastery[word])) || 0));
+// Returns true when this change is what made the word mastered.
+function scoreWord(word, change) {
+  const before = masteryOf(word);
+  mastery[word] = Math.min(MASTERED, Math.max(0, before + change));
+  try { localStorage.setItem(MASTERY_KEY, JSON.stringify(mastery)); } catch (e) { /* storage unavailable */ }
+  return before < MASTERED && mastery[word] === MASTERED;
+}
 
 // ---------- level maps ----------
 // Each level is a 3x3 grid of rooms. A winding main path runs from the bottom row (entry) to the
@@ -928,6 +1001,7 @@ function say_msg(text, t = 3) { message = { text, t }; }
 // ---------- input ----------
 addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
+  if (!masteryEl.hidden) { if (k === 'escape') closeMastery(); return; }
   if (state === 'combat') {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (/^[a-z]$/.test(k)) typeLetter(k);
@@ -1384,7 +1458,9 @@ function nextWord() {
   combat.word = word; combat.sentence = sentence; combat.typed = ''; combat.locked = false;
   combat.reveal = null;
   combat.timeMax = combat.timeLeft = 3 + 1.5 * word.length;
-  sentenceEl.textContent = sentence.replace(new RegExp('\\b' + word + '\\b', 'i'), '_____');
+  // One blank per letter. Non-breaking spaces keep them countable and on one line.
+  const blanks = Array(word.length).fill('_').join('\u00A0');
+  sentenceEl.textContent = sentence.replace(new RegExp('\\b' + word + '\\b', 'i'), blanks);
   renderSlots();
   setTimeout(() => { if (combat && combat.word === word) say(word); }, 350);
 }
@@ -1419,6 +1495,7 @@ function submit() {
     stats.correct++; if (quick) stats.quick++;
     c.enemy.hp = Math.max(0, c.enemy.hp - (quick ? 2 : 1) - WEAPONS[player.weapon].bonus);
     c.reveal = 'good'; renderSlots();
+    if (scoreWord(c.word, 1)) addFloater('MASTERED!', '#ffd23f', 'knight', 0.3);
     if (c.enemy.hp <= 0 && !c.enemy.wall) {
       const g = c.enemy.gold + rnd(0, 2);
       save.gold += g; stats.gold += g; persist();
@@ -1432,6 +1509,7 @@ function submit() {
     else addFloater('SLASH!', '#ffcd75', 'enemy');
   } else {
     stats.missed.add(c.word);
+    scoreWord(c.word, -1);
     if (!c.enemy.wall) {
       // Re-queue so the word comes back soon.
       bag.splice(Math.min(2, bag.length), 0, [c.word, c.sentence]);
@@ -1481,6 +1559,70 @@ function wallDone(sc, broke) {
 
 function addFloater(s, color, who, delay = 0, dy = 0) { floaters.push({ s, color, who, t: -delay, dy }); }
 
+// ---------- mastery screen ----------
+const masteryEl = document.getElementById('mastery'), masteryBtn = document.getElementById('masteryBtn');
+const mTabs = document.getElementById('mTabs'), mList = document.getElementById('mList');
+const mSummary = document.getElementById('mSummary');
+let masteryGrade = grade;
+document.getElementById('mClose').onclick = () => closeMastery();
+masteryBtn.onclick = () => { masteryBtn.blur(); if (state === 'explore') openMastery(); };
+
+// Opens over whatever is showing. Returns false so a menu button leaves its menu underneath.
+function openMastery() {
+  const p = savedProgress();
+  masteryGrade = state === 'title' && p ? p.grade : grade;
+  if (state === 'explore') {
+    for (const k in keys) keys[k] = false;
+    target = null; state = 'menu';
+  }
+  masteryEl.hidden = false; renderMastery(); mList.scrollTop = 0;
+  return false;
+}
+function closeMastery() {
+  masteryEl.hidden = true;
+  if (state === 'menu') state = 'explore';
+}
+function masteryCard(word) {
+  const score = masteryOf(word), done = score >= MASTERED;
+  const card = document.createElement('div'); card.className = 'mcard' + (done ? ' done' : '');
+  const name = document.createElement('div'); name.className = 'mword'; name.textContent = word;
+  const bar = document.createElement('div'); bar.className = 'mbar';
+  for (let i = 0; i < MASTERED; i++) {
+    const pip = document.createElement('i'); if (i < score) pip.className = 'on';
+    bar.appendChild(pip);
+  }
+  const status = document.createElement('div'); status.className = 'mstatus';
+  status.textContent = done ? '★ Mastered' : `${score}/${MASTERED}`;
+  card.append(name, bar, status);
+  return card;
+}
+function renderMastery() {
+  mTabs.innerHTML = '';
+  for (const g of GRADES) {
+    const t = document.createElement('button');
+    t.className = 'tab' + (g === masteryGrade ? ' on' : ''); t.textContent = `${ordinal(g)} Grade`;
+    t.onclick = () => { t.blur(); masteryGrade = g; renderMastery(); mList.scrollTop = 0; };
+    mTabs.appendChild(t);
+  }
+  mList.innerHTML = '';
+  const seen = new Set();
+  let total = 0, mastered = 0;
+  for (const [lvl, entries] of Object.entries(WORDS[masteryGrade] || WORDS[2])) {
+    const words = entries.map(e => e[0]).filter(w => !seen.has(w) && seen.add(w));
+    if (!words.length) continue;
+    const head = document.createElement('h3');
+    const L = LEVELS[lvl - 1];
+    head.textContent = L ? `Level ${lvl}: ${L.name}` : `Level ${lvl}`;
+    const grid = document.createElement('div'); grid.className = 'mgrid';
+    for (const w of words) {
+      grid.appendChild(masteryCard(w));
+      total++; if (masteryOf(w) >= MASTERED) mastered++;
+    }
+    mList.append(head, grid);
+  }
+  mSummary.textContent = `${mastered}/${total} mastered`;
+}
+
 // ---------- overlay ----------
 const overlay = document.getElementById('overlay');
 const ovTitle = document.getElementById('ovTitle'), ovBody = document.getElementById('ovBody');
@@ -1509,7 +1651,8 @@ const HOW_TO = 'Walk with <b>W A S D</b> (or arrows) or <b>click</b> where to go
   'Touch a monster to fight!<br>' +
   'Listen to the word, then <b>type</b> it (or click the letters) and press <b>Enter</b> to swing your sword.<br>' +
   'Spell it wrong and you miss &mdash; the monster hits you!<br>' +
-  '<b>Tab</b> repeats the word.<br>Spell it before the <b>timer</b> runs out for double damage!';
+  '<b>Tab</b> repeats the word.<br>Spell it before the <b>timer</b> runs out for double damage!<br>' +
+  'Spell a word right <b>5 times</b> to master it. A miss takes away 1.';
 function showSplash() {
   state = 'title';
   showMenu('Spelling Knight', '<span class="blink">Press any button to continue</span>', []);
@@ -1526,6 +1669,7 @@ function showMainMenu() {
     { label: 'Start New', fn: () => showGradeSelect(g => { delete save.progress; persist(); return startGame(1, null, g); }) },
     { label: 'Select Level', fn: () => showGradeSelect(showLevelSelect) },
     { label: p ? `Load Save (${ordinal(p.grade)} Grade, Level ${p.level})` : 'Load Save', disabled: !p, fn: () => startGame(p.level, p, p.grade) },
+    { label: 'Word Mastery', fn: openMastery },
     { label: 'How to Play', fn: showHowTo },
   ]);
 }
@@ -1560,6 +1704,7 @@ function endGame(won) {
   showMenu(won ? 'You Win!' : 'Defeated!', body, [
     { label: won ? 'Play again' : p ? `Last campfire (Level ${p.level})` : 'Try again',
       fn: () => startGame(p ? p.level : won ? 1 : level, p, p ? p.grade : grade) },
+    { label: 'Word Mastery', fn: openMastery },
     { label: 'Main Menu', back: true, fn: () => { showMainMenu(); return false; } },
   ]);
 }
@@ -1773,6 +1918,7 @@ let last = performance.now();
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now; time += dt;
   ctx.fillStyle = '#0d0e17'; ctx.fillRect(0, 0, W, H);
+  masteryBtn.hidden = state !== 'explore';   // the list shows spellings, so never during a fight
   if (state === 'explore') { updateExplore(dt); if (state === 'explore') drawExplore(); }
   if (state === 'combat') drawCombat(dt);
   if (state === 'menu') { drawExplore(); renderPreview(); }

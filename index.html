@@ -10,6 +10,7 @@
 <div id="stage">
   <canvas id="game"></canvas>
   <button id="mute" class="btn small" title="Music on/off (M)">🎵</button>
+  <button id="masteryBtn" class="btn small" title="Word Mastery" aria-label="Word Mastery" hidden>📖</button>
 
   <div id="panel" hidden>
     <div id="clue">
@@ -39,10 +40,21 @@
     <div id="ovBody"></div>
     <div id="ovMenu"></div>
   </div>
+
+  <div id="mastery" hidden>
+    <div id="mTop">
+      <h2>Word Mastery</h2>
+      <span id="mSummary"></span>
+      <button id="mClose" class="btn small">Done</button>
+    </div>
+    <div id="mTabs"></div>
+    <div id="mList"></div>
+  </div>
 </div>
 <script src="words.js"></script>
 <script src="words-grades.js"></script>
   <script src="sentences.js"></script>
+<script src="voice-clips.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

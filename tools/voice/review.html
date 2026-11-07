@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Voice Clip Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font: 16px system-ui, sans-serif; margin: 16px; max-width: 760px; background: #fff; color: #222; }
+  .bar { position: sticky; top: 0; background: #fff; padding: 8px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #ccc; }
+  h2 { margin: 20px 0 6px; font-size: 16px; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 6px; border-radius: 4px; }
+  .row.now { background: #fff3c4; }
+  .row.bad { background: #fbd5d5; }
+  .row span { flex: 1; }
+  code { display: block; white-space: pre-wrap; background: #f2f2f2; padding: 8px; }
+  button { font: inherit; padding: 4px 10px; }
+</style>
+</head>
+<body>
+<h1>Voice clip review</h1>
+<p>Press Play all and flag anything that sounds wrong. Space pauses, and F flags the clip that's playing. Flags are kept in this browser.</p>
+<div class="bar">
+  <button id="all">Play all</button>
+  <button id="stop">Stop</button>
+  <label><input type="checkbox" id="onlyWords"> Words only</label>
+  <span id="count"></span>
+</div>
+<h2>Flagged clips</h2>
+<code id="flagged"></code>
+<div id="list"></div>
+
+<script src="../../voice-clips.js"></script>
+<script>
+  const STORE = 'spellingKnightVoiceFlags';
+  const player = new Audio();
+  const list = document.getElementById('list');
+  const flaggedEl = document.getElementById('flagged');
+  let flags = new Set();
+  try { flags = new Set(JSON.parse(localStorage.getItem(STORE) || '[]')); } catch (e) {}
+
+  const clips = Object.entries(window.VOICE_CLIPS).map(([text, file]) => ({ text, file, word: file.startsWith('w-') }));
+  clips.sort((a, b) => b.word - a.word || a.text.localeCompare(b.text));
+  let current = null, queue = [];
+
+  function saveFlags() {
+    try { localStorage.setItem(STORE, JSON.stringify([...flags])); } catch (e) {}
+    flaggedEl.textContent = [...flags].map(f => {
+      const c = clips.find(x => x.file === f);
+      return c ? `${f}  "${c.text}"` : f;
+    }).join('\n') || 'None yet';
+    document.getElementById('count').textContent = `${clips.length} clips, ${flags.size} flagged`;
+  }
+  function toggleFlag(c) {
+    flags.has(c.file) ? flags.delete(c.file) : flags.add(c.file);
+    c.row.classList.toggle('bad', flags.has(c.file));
+    saveFlags();
+  }
+  function play(c) {
+    if (current) current.row.classList.remove('now');
+    current = c;
+    c.row.classList.add('now');
+    c.row.scrollIntoView({ block: 'center' });
+    player.src = '../../audio/voice/' + c.file;
+    player.play();
+  }
+  // A short gap between clips makes each one easier to judge.
+  player.onended = () => { if (queue.length) setTimeout(() => queue.length && play(queue.shift()), 500); };
+
+  let section = null;
+  for (const c of clips) {
+    if (c.word !== section) {
+      section = c.word;
+      const h = document.createElement('h2');
+      h.textContent = c.word ? 'Words' : 'Sentences';
+      list.appendChild(h);
+    }
+    const row = document.createElement('div');
+    row.className = 'row' + (flags.has(c.file) ? ' bad' : '');
+    const label = document.createElement('span');
+    label.textContent = c.text;
+    const p = document.createElement('button');
+    p.textContent = 'Play';
+    p.onclick = () => { queue = []; play(c); };
+    const f = document.createElement('button');
+    f.textContent = 'Flag';
+    f.onclick = () => toggleFlag(c);
+    row.append(label, p, f);
+    list.appendChild(row);
+    c.row = row;
+  }
+  document.getElementById('all').onclick = () => {
+    const wordsOnly = document.getElementById('onlyWords').checked;
+    queue = clips.filter(c => !wordsOnly || c.word);
+    play(queue.shift());
+  };
+  document.getElementById('stop').onclick = () => { queue = []; player.pause(); };
+  addEventListener('keydown', e => {
+    if (e.target.tagName === 'BUTTON' && e.key === ' ') e.preventDefault();
+    if (e.key === ' ') { e.preventDefault(); player.paused ? player.play() : player.pause(); }
+    if ((e.key === 'f' || e.key === 'F') && current) toggleFlag(current);
+  });
+  saveFlags();
+</script>
+</body>
+</html>

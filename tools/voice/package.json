@@ -1,0 +1,13 @@
+{
+  "name": "spelling-knight-voice",
+  "private": true,
+  "type": "module",
+  "description": "Generates the game's pre-recorded voice clips. Not needed to play the game.",
+  "scripts": {
+    "generate": "node generate.mjs"
+  },
+  "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
+    "kokoro-js": "^1.2.1"
+  }
+}

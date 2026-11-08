@@ -9,6 +9,7 @@
 <body>
 <div id="stage">
   <canvas id="game"></canvas>
+  <button id="pauseBtn" class="btn small" title="Pause (Esc)" aria-label="Pause" hidden>II</button>
   <button id="mute" class="btn small" title="Music on/off (M)">🎵</button>
   <button id="masteryBtn" class="btn small" title="Word Mastery" aria-label="Word Mastery" hidden>📖</button>
 
@@ -21,6 +22,26 @@
     <div id="timer"><div id="timerFill"></div><span id="timerLabel"></span></div>
     <div id="slots"></div>
     <div id="kb"></div>
+  </div>
+
+  <div id="fix" hidden>
+    <h3>Not quite!</h3>
+    <div class="fixRow"><span class="fixLabel">You spelled:</span><div id="fixTyped" class="fixWord"></div></div>
+    <div class="fixRow"><span class="fixLabel">Correct:</span><div id="fixRight" class="fixWord"></div></div>
+    <div class="fixBtns">
+      <button id="fixHear" class="btn small">🔊 Hear it</button>
+      <button id="fixOk" class="btn">Got it!</button>
+    </div>
+  </div>
+
+  <div id="mastered" hidden>
+    <div id="mdConfetti"></div>
+    <div class="mdStars"><span>★</span><span>★</span><span>★</span></div>
+    <h3>MASTERED!</h3>
+    <div id="mdWord" class="fixWord"></div>
+    <div id="mdCount"></div>
+    <div id="mdNote"></div>
+    <button id="mdOk" class="btn">Awesome!</button>
   </div>
 
   <div id="wardrobe" hidden>

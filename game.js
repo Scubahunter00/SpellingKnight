@@ -203,7 +203,7 @@ const S = {
 };
 const WHITE = {}, RED = {};
 // ---------- cosmetics ----------
-// Helmets replace the top 5 rows of the knight; the visor rows below are shared.
+// Helmets replace the top rows of the knight (usually 5); the visor rows below are shared.
 const HELMETS = {
   horned: { name: 'Horned', price: 0, rows: [
     '..h............h..', '.hh............hh.', '.hHk..kkkkkk..kHh.',
@@ -231,7 +231,108 @@ const HELMETS = {
     '.kppppppppppppppk.', '...kbbbbbllbbbk...'] },
   crown: { name: 'Royal Crown', price: 100, rows: [
     '..................', '.....y..yy..y.....', '....kyyyrryyyk....',
-    '....kkbbbbllkk....', '...kbbbbbllbbbk...'] }
+    '....kkbbbbllkk....', '...kbbbbbllbbbk...'] },
+  // Masks have 9 rows, so they cover the whole head instead of sitting above the visor.
+  smiley: { name: 'Smiley', price: 60, pal: { Y: '#ffd23f' }, rows: [
+    '......kkkkkk......',
+    '....kkYYYYYYkk....',
+    '...kYYYYYYYYYYk...',
+    '...kYYkYYYYkYYk...',
+    '...kYYkYYYYkYYk...',
+    '...kYYYYYYYYYYk...',
+    '...kYkYYYYYYkYk...',
+    '....kYkkkkkkYk....',
+    '.....kkYYYYkk.....'] },
+  pumpkin: { name: "Jack-o'-Lantern", price: 80, pal: { P: '#ff8a2a', Q: '#c4561c', Y: '#ffe14a' }, rows: [
+    '........gg........',
+    '....kkkkggkkkk....',
+    '...kPQPPPPPPQPk...',
+    '..kPQPYPPPPYPQPk..',
+    '..kPQYYYPPYYYQPk..',
+    '..kPQPPPYYPPPQPk..',
+    '..kPYPYPYPYPYPYk..',
+    '..kPQYYYYYYYYQPk..',
+    '...kkPPYPPYPPkk...'] },
+  skull: { name: 'Skull', price: 90, rows: [
+    '.....kkkkkkkk.....',
+    '....kwwwwwwwwk....',
+    '...kwwwwwwwwwwk...',
+    '...kwkkkwwkkkwk...',
+    '...kwkkkwwkkkwk...',
+    '...kwwwwkkwwwwk...',
+    '....kswwwwwwsk....',
+    '.....kwkwkwkwk....',
+    '......kkkkkkk.....'] },
+  robot: { name: 'Robot', price: 110, rows: [
+    '........kRk.......',
+    '....kkkkkkkkkk....',
+    '...kssssssssssk...',
+    '...ksRRRRRRRRsk...',
+    '...ksRwRRRRwRsk...',
+    '...kssssssssssk...',
+    '...kskykykykysk...',
+    '...kssssssssssk...',
+    '....kkkkkkkkkk....'] },
+  cathead: { name: 'Cat Head', price: 115, pal: { a: '#94a0b8', A: '#5a6482', c: '#f4f4f4' }, rows: [
+    '...k..........k...',
+    '..kak........kak..',
+    '..kaakkkkkkkkaak..',
+    '..kaaaaAaaAaaaak..',
+    '..kaagkaaaakgaak..',
+    '..kaagkaaaakgaak..',
+    '.kkaaaaaqqaaaaakk.',
+    '...kaaacwwcaaak...',
+    '....kkkkkkkkkk....'] },
+  tiger: { name: 'Tiger', price: 120, pal: { P: '#ff8a2a' }, rows: [
+    '...kk........kk...',
+    '..kPPkkkkkkkkPPk..',
+    '..kPPPkPPPPkPPPk..',
+    '...kPPPkPPkPPPk...',
+    '...kPgkPPPPkgPk...',
+    '...kkPPwwwwPPkk...',
+    '...kPPwwRRwwPPk...',
+    '....kPwwkkwwPk....',
+    '.....kkkkkkkk.....'] },
+  doghead: { name: 'Dog Head', price: 125, pal: { a: '#c9935a', A: '#8a5a3c', c: '#f2e6b8' }, rows: [
+    '.....kkkkkkkk.....',
+    '...kkkaaaaaakkk...',
+    '..kAAkaaaaaakAAk..',
+    '..kAAakaaaakaAAk..',
+    '..kAAaaaaaaaaAAk..',
+    '..kAAaaccccaaAAk..',
+    '...kkacckkccakk...',
+    '.....kccRRcck.....',
+    '......kkRRkk......'] },
+  chickenhead: { name: 'Chicken Head', price: 130, rows: [
+    '......R.RR.R......',
+    '.....RRRRRRRR.....',
+    '.....kkkkkkkk.....',
+    '....kwwwwwwwwk....',
+    '...kwwkwwwwkwwk...',
+    '...kwwwwOOwwwwk...',
+    '...kwwwOOOOwwwk...',
+    '....kwwwRRwwwk....',
+    '.....kkkRRkkk.....'] },
+  goathead: { name: 'Goat Head', price: 140, pal: { a: '#e8e4d0', H: '#8a5a3c', c: '#c9a86a', Y: '#ffe14a' }, rows: [
+    '...HH........HH...',
+    '....HH.kkkk.HH....',
+    '.....HkaaaakH.....',
+    '.kkk.kaaaaaak.kkk.',
+    '.kaakaYkaakYakaak.',
+    '..kkkaaaaaaaakkk..',
+    '....kaaaqqaaak....',
+    '.....kaakkaak.....',
+    '......kcccck......'] },
+  snakehead: { name: 'Snake Head', price: 150, pal: { a: '#5fcf5f', A: '#257179', Y: '#ffe14a' }, rows: [
+    '.....kkkkkkkk.....',
+    '...kkaaaAAaaakk...',
+    '..kaaaAAaaAAaaak..',
+    '..kaaaaaAAaaaaak..',
+    '..kkYYkaaaakYYkk..',
+    '...kaYkaaaakYak...',
+    '....kaaaaaaaak....',
+    '.....kakaakak.....',
+    '......kkRRkk......'] }
 };
 const COLORS = {
   blue:   { name: 'Blue',   price: 0,  pal: { b: '#2f55d4', l: '#8fc0ff', d: '#1a2a7a' } },
@@ -252,10 +353,558 @@ const SKINS = {
   flames:  { name: 'Hot Rod',    price: 40, fn: (x, y) => (y >= 11 ? ((x + y) % 3 === 0 ? 'y' : x % 2 ? 'O' : 'R') : null) },
   cow:     { name: 'Cow',        price: 50, fn: (x, y) => ((x * 5 + y * 3) % 7 < 2 ? 'x' : 'w') }
 };
-const CATALOG = { helmet: HELMETS, color: COLORS, skin: SKINS };
+// ---------- creatures ----------
+// Play as something other than a knight. Each is 18x18: 15 rows of body, then 3 rows from
+// `legs` for each walk frame. `hand` is where it holds the sword. Helmets and armor don't apply.
+// Optional `framePal` changes colors by frame, for anything that flickers.
+const BIRD_LEGS = {
+  idle: ['.....kfk..kfk.....', '.....kfk..kfk.....', '....kfffkkfffk....'],
+  a:    ['.....kfk..kfk.....', '....kfk....kfk....', '...kffk.....kffk..'],
+  b:    ['.....kfk..kfk.....', '.....kfk..kfk.....', '....kfffkkfffk....'],
+  c:    ['.....kfk..kfk.....', '......kfkkfk......', '.....kfffffffk....']
+};
+const BEAST_LEGS = {
+  idle: ['..kfk.kfk.kfk.kfk.', '..kfk.kfk.kfk.kfk.', '..khk.khk.khk.khk.'],
+  a:    ['..kfk.kfk.kfk.kfk.', '..kfk.khk.kfk.khk.', '..khk.....khk.....'],
+  b:    ['..kfk.kfk.kfk.kfk.', '..kfk.kfk.kfk.kfk.', '..khk.khk.khk.khk.'],
+  c:    ['..kfk.kfk.kfk.kfk.', '..khk.kfk.khk.kfk.', '......khk.....khk.']
+};
+const CREATURES = {
+  knight: { name: 'Knight', price: 0 },
+  pig: { name: 'Pig', price: 400, hand: { x: 15, y: 11 }, pal: { a: '#f7a8c4', A: '#d97a9e', f: '#d97a9e', h: '#5d275d' },
+    rows: [
+      '..................',
+      '..................',
+      '..........kk..kk..',
+      '.........kAAkkAAk.',
+      '.........kaaaaaak.',
+      '.........kaakaaakk',
+      '.........kaaaaaAAk',
+      '..kk.....kaaaaAkAk',
+      '.kk.kkkkkkaaaaaAAk',
+      '.k.kaaaaaaaaaaaakk',
+      '...kaaaaaaaaaaaak.',
+      '...kaaaaaaaaaaaak.',
+      '...kaaaaaaaaaaaak.',
+      '...kAaaaaaaaaaaAk.',
+      '...kkAAAAAAAAAAkk.'
+    ], legs: BEAST_LEGS },
+  chicken: { name: 'Chicken', price: 500, hand: { x: 13, y: 12 }, pal: { a: '#c0cbdc', f: '#ff8a2a' },
+    rows: [
+      '...........RR.R...',
+      '..........RRRRR...',
+      '..........kkkkk...',
+      '.........kwwwwwk..',
+      '.........kwwkwwk..',
+      '.........kwwwwwOO.',
+      '.k.......kwwwwwOO.',
+      'kwk......kRRwwkk..',
+      'kwwk.....kRwwwk...',
+      'kwwwkkkkkwwwwwwk..',
+      '.kwwwwwwwwwwwwwk..',
+      '.kwwwkaaaakwwwwk..',
+      '..kwwwkaaakwwwk...',
+      '...kwwwkkkwwwk....',
+      '....kkkkkkkkk.....'
+    ], legs: BIRD_LEGS },
+  frog: { name: 'Frog', price: 600, hand: { x: 15, y: 13 }, pal: { a: '#5fcf5f', A: '#2f9e44', c: '#e8f4b0', f: '#2f9e44' },
+    rows: [
+      '..................',
+      '..................',
+      '...kkk......kkk...',
+      '..kwwwk....kwwwk..',
+      '..kwkwk....kwkwk..',
+      '..kwwwkkkkkkwwwk..',
+      '.kaaaaaaaaaaaaaak.',
+      '.kaaaaaaaaaaaaaak.',
+      '.kakkkkkkkkkkkkak.',
+      '.kaakkkkkkkkkkaak.',
+      '..kaaaaaaaaaaaak..',
+      '.kAaaccccccccaaAk.',
+      '.kAaccccccccccaAk.',
+      '.kAaccccccccccaAk.',
+      '..kaaaccccccaaak..'
+    ], legs: {
+      idle: ['.kAAkaaaaaaaakAAk.', 'kAAAAkkkkkkkkAAAAk', 'kkkkkk......kkkkkk'],
+      a:    ['.kAAkaaaaaaaakAAk.', 'kAAAkkkkkkkkkAAAk.', 'kkkkk.......kkkkk.'],
+      b:    ['.kAAkaaaaaaaakAAk.', 'kAAAAkkkkkkkkAAAAk', 'kkkkkk......kkkkkk'],
+      c:    ['.kAAkaaaaaaaakAAk.', '.kAAAkkkkkkkkkAAAk', '.kkkkk.......kkkkk']
+    } },
+  cat: { name: 'Cat', price: 750, hand: { x: 15, y: 11 }, pal: { a: '#f2a65a', A: '#c4683c', c: '#fff1d0', f: '#f2a65a', h: '#fff1d0' },
+    rows: [
+      '.........kk...kk..',
+      '.........kak.kak..',
+      '.........kaakaak..',
+      '.........kaaaaak..',
+      '.........kgkakgk..',
+      '.kk......kaaqaak..',
+      'kaak......kcwck...',
+      'kAk......kkkkkk...',
+      'kak.kkkkkkaAaAak..',
+      'kAkkaAaAaAaAaAak..',
+      '.kkaAaAaAaAaAaak..',
+      '...kaAaAaAaAaAak..',
+      '...kaaaaaaaaaaak..',
+      '...kaccccccccaak..',
+      '...kkkkkkkkkkkkk..'
+    ], legs: {
+      idle: ['...kak.kak.kak.kak', '...kak.kak.kak.kak', '...khk.khk.khk.khk'],
+      a:    ['...kak.kak.kak.kak', '...kak.khk.kak.khk', '...khk.....khk....'],
+      b:    ['...kak.kak.kak.kak', '...kak.kak.kak.kak', '...khk.khk.khk.khk'],
+      c:    ['...kak.kak.kak.kak', '...khk.kak.khk.kak', '.......khk.....khk']
+    } },
+  scarecrow: { name: 'Scarecrow', price: 800, hand: { x: 15, y: 11 }, pal: { H: '#8a5a3c', a: '#d9b98a', S: '#b13e53', c: '#6a1a2a', b: '#566c86' },
+    rows: [
+      '.......kkkk.......',
+      '......kHHHHk......',
+      '......kHHHHk......',
+      '...kkkkkkkkkkkk...',
+      '..kHHHHHHHHHHHHk..',
+      '....kaaaaaaaak....',
+      '....kaakaakaak....',
+      '....kaaaaaaaak....',
+      '....kakakakaak....',
+      '.....kkkkkkkk.....',
+      'yy.kkSSSSSSSSkk.yy',
+      '.ykSSSScSScSSSSky.',
+      '...kkkSSccSSkkk...',
+      '.....kSSccSSk.....',
+      '.....kkkkkkkk.....'
+    ], legs: KNIGHT_LEGS },
+  zombie: { name: 'Zombie', price: 900, hand: { x: 15, y: 12 }, pal: { a: '#7ab87a', c: '#566c86', b: '#5a6482' },
+    rows: [
+      '.....kkkkkkkk.....',
+      '....kxxxxaxxak....',
+      '....kxxaxaxxak....',
+      '....kaaaaaaaak....',
+      '...kaRkaaaRkaak...',
+      '...kaaaaaaaaaak...',
+      '...kaakkkkkkaak...',
+      '....kaakwkwaak....',
+      '.....kkkkkkkk.....',
+      '...kkcccacccckk...',
+      '..kakccaccacckak..',
+      '..kakcccacccckak..',
+      '..kaakcaccackaak..',
+      '...kk.kcccck.kk...',
+      '......kccack......'
+    ], legs: KNIGHT_LEGS },
+  penguin: { name: 'Penguin', price: 1000, hand: { x: 15, y: 10 }, pal: { a: '#333c57', f: '#ff8a2a' },
+    rows: [
+      '.....kkkkkkkk.....',
+      '....kaaaaaaaak....',
+      '...kaaaaaaaaaak...',
+      '...kaawwaawwaak...',
+      '...kaawkaawkaak...',
+      '...kaaaOOOOaaak...',
+      '...kaaaaOOaaaak...',
+      '..kkaawwwwwwaakk..',
+      '.kaakawwwwwwakaak.',
+      '.kaakwwwwwwwwkaak.',
+      '.kakawwwwwwwwakak.',
+      '..k.kwwwwwwwwk.k..',
+      '....kwwwwwwwwk....',
+      '....kawwwwwwak....',
+      '.....kkkkkkkk.....'
+    ], legs: BIRD_LEGS },
+  mummy: { name: 'Mummy', price: 1100, hand: { x: 15, y: 12 }, pal: { b: '#c0cbdc' },
+    rows: [
+      '.....kkkkkkkk.....',
+      '....kwwsswwwwk....',
+      '...kssswwwssssk...',
+      '...kwwwssswwwwk...',
+      '...kkRkkkkkkRkk...',
+      '...kwwwssswwwwk...',
+      '...kssswwwwsssk...',
+      '....kwwwsswwwk....',
+      '.....kkkkkkkk.....',
+      '...kkssswwssskk...',
+      '..kwskwwsswwkswk..',
+      '..kswkssswwskwsk..',
+      '..kwskwwsswwkswk..',
+      '...kk.kssssk.kk...',
+      '......kwwwwk......'
+    ], legs: KNIGHT_LEGS },
+  goaty: { name: 'Goaty', price: 1250, hand: { x: 15, y: 11 }, pal: { a: '#e8e4d0', A: '#b8b49c', H: '#8a5a3c', f: '#e8e4d0', h: '#333c57', c: '#c9a86a' },
+    rows: [
+      '...........H...H..',
+      '..........H...H...',
+      '..........HH.HH...',
+      '.........kkkkkkk..',
+      'kk......kaaaaaaak.',
+      'kak.....kaakaaaak.',
+      '.kk.....AkaaaaaaAk',
+      '..k......kaaaaqqAk',
+      '..kkkkkkkkaaaakkk.',
+      '..kaaaaaaaaaaakcck',
+      '..kaaAaaaaaAaaakck',
+      '..kaaaaaaAaaaaak..',
+      '..kaAaaaaaaaaAak..',
+      '..kaaaaaAaaaaaak..',
+      '..kkkkkkkkkkkkkk..'
+    ], legs: BEAST_LEGS },
+  skeleton: { name: 'Skeleton', price: 1400, hand: { x: 15, y: 12 }, pal: { f: '#f4f4f4' },
+    rows: [
+      '.....kkkkkkkk.....',
+      '....kwwwwwwwwk....',
+      '...kwwwwwwwwwwk...',
+      '...kwkkkwwkkkwk...',
+      '...kwkkkwwkkkwk...',
+      '...kwwwwkkwwwwk...',
+      '....kwkwkwkwwk....',
+      '.....kkkkkkkk.....',
+      '...kkkkwwwwkkkk...',
+      '..kwwkkwkkwkkwwk..',
+      '..kwkkwwwwwwkkwk..',
+      '..kwk.kkwwkk.kwk..',
+      '..kwk.kwwwwk.kwk..',
+      '..kwk.kkwwkk.kwk..',
+      '..k.k..kwwk..k.k..'
+    ], legs: BIRD_LEGS },
+  snake: { name: 'Snake', price: 1500, hand: { x: 14, y: 8 }, pal: { a: '#5fcf5f', A: '#257179', c: '#ffcd75' },
+    rows: [
+      '.........kkkkkkk..',
+      '........kaaaaaaak.',
+      '........kaakaaaakk',
+      '........kaaaaaaaRR',
+      '.........kaaaakkR.',
+      '.........kcaak....',
+      '.........kcAak....',
+      '.........kcaak....',
+      '......kkkkcaak....',
+      '....kkaAaaAaak....',
+      '...kaaaaAaaaAak...',
+      '...kaAaaaaAaaak...',
+      '....kkkkkkkkkk....',
+      '..kkaaAaaaAaaakk..',
+      '.kaaaaaaAaaaaAaak.'
+    ], legs: {
+      idle: ['.kaAaaaAaaaAaaaak.', '.kcccccccccccccck.', '..kkkkkkkkkkkkkk..'],
+      a:    ['.kaaaAaaaAaaaAaak.', '.kcccccccccccccck.', 'kkkkkkkkkkkkkkkk..'],
+      b:    ['.kaAaaaAaaaAaaaak.', '.kcccccccccccccck.', '..kkkkkkkkkkkkkk..'],
+      c:    ['.kaaaaAaaaAaaaAak.', '.kcccccccccccccck.', '..kkkkkkkkkkkkkkkk']
+    } },
+  vampire: { name: 'Vampire', price: 1600, hand: { x: 15, y: 12 }, pal: { a: '#d8e0e8', c: '#333c57', R: '#a01f33', b: '#333c57' },
+    rows: [
+      '.....kkkkkkkk.....',
+      '....kxxxxxxxxk....',
+      '...kxxxxaaxxxxk...',
+      '...kxxaaaaaaxxk...',
+      '...kaaRkaaRkaak...',
+      '...kaaaaaaaaaak...',
+      '...kaaakkkkaaak...',
+      '....kaawaawaak....',
+      '.RR..kkkkkkkk..RR.',
+      '.RRkkcccwwccckkRR.',
+      '.RRRkcccRRccckRRR.',
+      '.RRRkcccccccckRRR.',
+      '.RRRkcccccccckRRR.',
+      '.kRRkcccccccckRRk.',
+      '..kkkkcccccckkkk..'
+    ], legs: KNIGHT_LEGS },
+  bomb: { name: 'Bomb Buddy', price: 1750, hand: { x: 15, y: 12 }, pal: { a: '#3a3f5c', L: '#7a85a8' },
+    framePal: {
+      idle: { F: '#ffcd75', G: '#ff8a2a' },
+      a:    { F: '#ff3b3b', G: '#ffcd75' },
+      b:    { F: '#ffcd75', G: '#ff3b3b' },
+      c:    { F: '#f4f4f4', G: '#ff8a2a' }
+    },
+    rows: [
+      '............F.G...',
+      '...........GFF....',
+      '..........kn......',
+      '.........knk......',
+      '.....kkkkkkkk.....',
+      '....kaaaaaaaak....',
+      '...kaLLaaaaaaak...',
+      '..kaLLaaaaaaaaak..',
+      '..kaLawaaaaawaak..',
+      '..kaaawwwawwwaak..',
+      '..kaaawkwawkwaak..',
+      '..kaaaaaaaaaaaak..',
+      '..kaaaakkkkaaaak..',
+      '...kaaaaaaaaaak...',
+      '....kaaaaaaaak....'
+    ], legs: {
+      idle: ['.....kkkkkkkk.....', '.....kOk..kOk.....', '....kOOOkkOOOk....'],
+      a:    ['.....kkkkkkkk.....', '....kOk....kOk....', '...kOOk.....kOOk..'],
+      b:    ['.....kkkkkkkk.....', '.....kOk..kOk.....', '....kOOOkkOOOk....'],
+      c:    ['.....kkkkkkkk.....', '......kOkkOk......', '.....kOOOOOOk.....']
+    } },
+  astronaut: { name: 'Astronaut', price: 2000, hand: { x: 15, y: 12 }, pal: { b: '#f4f4f4', s: '#94b0c2' },
+    rows: [
+      '.....kkkkkkkk.....',
+      '....kwwwwwwwwk....',
+      '...kwwkkkkkkwwk...',
+      '...kwkyyyyOOkwk...',
+      '...kwkyyyOOOkwk...',
+      '...kwkyOOOOOkwk...',
+      '...kwwkkkkkkwwk...',
+      '....kwwwwwwwwk....',
+      '..kkkkwwwwwwkkkk..',
+      '.kwwkwwwwwwwwkwwk.',
+      '.kwwkwwRgbwwwkwwk.',
+      '.kwwkwwkkkkwwkwwk.',
+      '.kOOkwwwwwwwwkOOk.',
+      '..kk.kwwwwwwk.kk..',
+      '.....kssssssk.....'
+    ], legs: KNIGHT_LEGS },
+  ghost: { name: 'Ghost', price: 2500, hand: { x: 15, y: 10 }, pal: {},
+    rows: [
+      '......kkkkkk......',
+      '....kkwwwwwwkk....',
+      '...kwwwwwwwwwwk...',
+      '...kwwwwwwwwwwk...',
+      '..kwwkkwwwwkkwwk..',
+      '..kwwkkwwwwkkwwk..',
+      '..kwwwwwwwwwwwwk..',
+      '..kwwwwkkkkwwwwk..',
+      '..kwwwwkkkkwwwwk..',
+      '..kwwwwwwwwwwwwk..',
+      '..kswwwwwwwwwwsk..',
+      '..kswwwwwwwwwwsk..',
+      '..kswwwwwwwwwwsk..',
+      '..kswwwwwwwwwwsk..',
+      '..kswwwwwwwwwwsk..'
+    ], legs: {   // no feet: the hem ripples instead
+      idle: ['..kswwwwwwwwwwsk..', '..kwwwkwwwwkwwwk..', '...kkk.kkkk.kkk...'],
+      a:    ['..kswwwwwwwwwwsk..', '..kwkwwwkkwwwkwk..', '...k.kkk..kkk.k...'],
+      b:    ['..kswwwwwwwwwwsk..', '..kwwwkwwwwkwwwk..', '...kkk.kkkk.kkk...'],
+      c:    ['..kswwwwwwwwwwsk..', '..kwwkwwwwwwkwwk..', '...kk.kkkkkk.kk...']
+    } },
+  dragon: { name: 'Dragon', price: 3000, hand: { x: 13, y: 12 }, pal: { a: '#c43a3a', A: '#6a1a1a', c: '#ffcd75', f: '#c43a3a', W: '#8b5fbf' },
+    rows: [
+      '...........y...y..',
+      '...........yy.yy..',
+      '..k........kkkkkk.',
+      '.kWk......kaaaaaak',
+      '.kWWk.....kaakaaak',
+      '.kWWWk....kaaaaaRk',
+      '.kWWWWk...kaaaakkk',
+      '.kWWWWWk.kaaak.OO.',
+      '..kWWWWWkaaack.y..',
+      '...kWWWkaaaack....',
+      '..k.kkkaaaacck....',
+      '.kAk.kaaaaaccck...',
+      '.kak.kaAaAaccck...',
+      '..kakaaAaAaccck...',
+      '...kkaaaaaaccck...'
+    ], legs: BIRD_LEGS }
+};
+// ---------- pets ----------
+// Little followers bought in Dress-Up. They face right; `a`/`b` are two frames.
+// move: walk | hop | slither | fly | float (fly and float hover with a shadow underneath).
+const PETS = {
+  none: { name: 'No Pet', price: 0 },
+  chicken: { name: 'Chicken', price: 150, move: 'walk', a: [
+    '......RR...',
+    '.....kwwk..',
+    '.....kwkwO.',
+    '.k...kwwwOO',
+    'kwk.kwwwwRk',
+    'kwwkwwwwwk.',
+    'kwwwwwwwwk.',
+    '.kwwwwwwk..',
+    '..kkkkkk...',
+    '...y..y....',
+    '..yy.yy....'], b: [
+    '......RR...',
+    '.....kwwk..',
+    '.....kwkwO.',
+    '.k...kwwwOO',
+    'kwk.kwwwwRk',
+    'kwwkwwwwwk.',
+    'kwwwwwwwwk.',
+    '.kwwwwwwk..',
+    '..kkkkkk...',
+    '..y....y...',
+    '.yy...yy...'] },
+  frog: { name: 'Frog', price: 200, move: 'hop', pal: { G: '#a8e06a' }, a: [
+    '...kk...kk..',
+    '..kwek.kwek.',
+    '..kgggkgggk.',
+    '.kggggggggk.',
+    '.kgkkkkkkgk.',
+    'kgGGGGGGGgk.',
+    'kgGGGGGGGgk.',
+    'kggkkkkkggk.',
+    'kkk.....kkk.'], b: [
+    '...kk...kk..',
+    '..kwek.kwek.',
+    '..kgggkgggk.',
+    '.kggggggggk.',
+    '.kgkkkkkkgk.',
+    '.kGGGGGGGk..',
+    '..kGGGGGk...',
+    '.kgk...kgk..',
+    'kgk.....kgk.'] },
+  pig: { name: 'Pig', price: 250, move: 'walk', pal: { a: '#e8609a' }, a: [
+    '.......kk...',
+    '......kqqk..',
+    '.kkkkkkqqqk.',
+    'kqqqqqqqkqqk',
+    'kqqqqqqqqaak',
+    'kqqqqqqqqaak',
+    '.kqqqqqqqqk.',
+    '..kqkkkkqk..',
+    '..kqk..kqk..',
+    '..kk...kk...'], b: [
+    '.......kk...',
+    '......kqqk..',
+    '.kkkkkkqqqk.',
+    'kqqqqqqqkqqk',
+    'kqqqqqqqqaak',
+    'kqqqqqqqqaak',
+    '.kqqqqqqqqk.',
+    '..kqkkkkqk..',
+    '.kqk....kqk.',
+    '.kk......kk.'] },
+  snake: { name: 'Snake', price: 300, move: 'slither', a: [
+    '........kkk..',
+    '.......kggek.',
+    '.......kgggkRR',
+    '..kkk..kggk..',
+    '.kgggk.kgk...',
+    'kgkykgkgyk...',
+    'kgk.kggyk....',
+    '.kk..kkk.....'], b: [
+    '........kkk..',
+    '.......kggek.',
+    '.......kgggk.',
+    '.......kggk..',
+    'kk..kkkgyk...',
+    'kgkkgggyk....',
+    '.kgyk.kk.....',
+    '..kk.........'] },
+  bird: { name: 'Bird', price: 350, move: 'fly', a: [
+    '.kk.......',
+    '.klk..kkk.',
+    '..klkklllk',
+    '...kllllekyy',
+    '..kllllllk',
+    '..kbbllllk',
+    '...kkkkkk.'], b: [
+    '..........',
+    '......kkk.',
+    '.....klllk',
+    '.kkkkllllekyy',
+    'kllllbllllk',
+    '.kllkllllk.',
+    '..kk.kkkk..'] },
+  slime: { name: 'Slime Buddy', price: 400, move: 'hop', a: [
+    '....kkkk....',
+    '..kkppppkk..',
+    '.kpwpppppk..',
+    '.kpwpppppppk',
+    'kppkpppkpppk',
+    'kppkpppkpppk',
+    'kpppppppppk.',
+    '.kkkkkkkkkk.'], b: [
+    '............',
+    '............',
+    '...kkkkkk...',
+    '.kkppppppkk.',
+    'kpwpkpppkppk',
+    'kpppkpppkppk',
+    'kppppppppppk',
+    '.kkkkkkkkkk.'] },
+  wolf: { name: 'Wolf', price: 500, move: 'walk', a: [
+    '..........k.k.',
+    '.........ksksk',
+    '........kssssk',
+    'k.......ksskskk',
+    'ksk.kkkkkswwk.',
+    '.kssssssssswk.',
+    '.ksssssssswwk.',
+    '..kxssssssxk..',
+    '..ksk..ksk.ksk',
+    '..kk...kk..kk.'], b: [
+    '..........k.k.',
+    '.........ksksk',
+    '........kssssk',
+    'k.......ksskskk',
+    'ksk.kkkkkswwk.',
+    '.kssssssssswk.',
+    '.ksssssssswwk.',
+    '..kxssssssxk..',
+    '.ksk..ksk..ksk',
+    '.kk...kk....kk'] },
+  zombie: { name: 'Zombie Head', price: 600, move: 'float', pal: { a: '#7ab87a' }, a: [
+    '..kkkkkkk.',
+    '.kxxxaxxxk',
+    'kxxaxaxxak',
+    'kaaaaaaaak',
+    'kaRkaaRkak',
+    'kaaaaaaaak',
+    'kaakkkkaak',
+    'kaakwkwaak',
+    '.kaaaaaak.',
+    '..kkkkkk..'] },
+  ghost: { name: 'Ghosty', price: 700, move: 'float', alpha: 0.85, a: [
+    '...kkkk...',
+    '..kwwwwk..',
+    '.kwwwwwwk.',
+    '.kwkwwkwk.',
+    '.kwkwwkwk.',
+    '.kwwwwwwk.',
+    '.kwwkkwwk.',
+    '.kswwwwsk.',
+    '.kwkwkwwk.',
+    '..k.k.kk..'], b: [
+    '...kkkk...',
+    '..kwwwwk..',
+    '.kwwwwwwk.',
+    '.kwkwwkwk.',
+    '.kwkwwkwk.',
+    '.kwwwwwwk.',
+    '.kwwkkwwk.',
+    '.kswwwwsk.',
+    '.kwwkwkwk.',
+    '..kk.k.k..'] },
+  dragon: { name: 'Baby Dragon', price: 1000, move: 'fly', ember: true, a: [
+    '..kk..........',
+    '.kppk...kk....',
+    '.kpppk.kOOk...',
+    '..kppkkOOeOk..',
+    '...kOOOOOOOkk.',
+    '..kOOyyyOOk...',
+    '.kOOOyyyOk....',
+    'kOk.kOOOk.....',
+    'kk..kk.kk.....'], b: [
+    '..............',
+    '........kk....',
+    '.......kOOk...',
+    '.kkk..kOOeOk..',
+    'kpppkkOOOOOOkk',
+    '.kppkOyyyOOk..',
+    '..kkkOOyyyOk..',
+    '...kOk.kOOk...',
+    '....kk..kk....'] }
+};
+for (const pt of Object.values(PETS)) if (pt.a) {
+  // Both frames the same width, so the pet doesn't jitter as they swap.
+  const w = Math.max(...pt.a.concat(pt.b || []).map(r => r.length));
+  const pad = rows => rows && rows.map(r => r.padEnd(w, '.'));
+  pt.a = pad(pt.a); pt.b = pad(pt.b);
+  pt.imgA = makeSprite(pt.a, pt.pal);
+  pt.imgB = pt.b ? makeSprite(pt.b, pt.pal) : pt.imgA;
+}
+
+const CATALOG = { helmet: HELMETS, color: COLORS, skin: SKINS, creature: CREATURES, pet: PETS };
 
 const spriteCache = {};
 function knightSprite(look, frame, variant) {
+  const creature = CREATURES[look.creature];
+  if (creature && creature.rows) {
+    const key = [look.creature, frame, variant].join('|');
+    if (!spriteCache[key]) {
+      spriteCache[key] = variant === 'red'
+        ? tint(knightSprite(look, frame, 'normal'), '#ff4d4d')
+        : makeSprite(creature.rows.concat(creature.legs[frame]),
+          { ...creature.pal, ...(creature.framePal ? creature.framePal[frame] : {}) });
+    }
+    return spriteCache[key];
+  }
   const col = COLORS[look.color];
   const palId = col.cycle ? col.cycle[Math.floor(time * 6) % col.cycle.length] : look.color;
   const key = [look.helmet, palId, look.skin, frame, variant].join('|');
@@ -263,27 +912,195 @@ function knightSprite(look, frame, variant) {
   let s;
   if (variant === 'red') s = tint(knightSprite(look, frame, 'normal'), '#ff4d4d');
   else {
-    const rows = HELMETS[look.helmet].rows.concat(KNIGHT_BODY.slice(5), KNIGHT_LEGS[frame]);
+    const helmet = HELMETS[look.helmet];
+    const rows = helmet.rows.concat(KNIGHT_BODY.slice(helmet.rows.length), KNIGHT_LEGS[frame]);
     const skin = SKINS[look.skin].fn;
     const skinned = rows.map((row, y) =>
       [...row].map((ch, x) => (ch === 'b' && skin(x, y)) || ch).join(''));
-    s = makeSprite(skinned, { ...KNIGHT_PAL, ...COLORS[palId].pal });
+    s = makeSprite(skinned, { ...KNIGHT_PAL, ...COLORS[palId].pal, ...helmet.pal });
   }
   return (spriteCache[key] = s);
 }
 const COIN = makeSprite(['.kkk.', 'kyyyk', 'kyOyk', 'kyyyk', '.kkk.']);
+const MACE = [
+  '...w...',
+  '.ksssk.',
+  'wsssssw',
+  'ksswssk',
+  'wsssssw',
+  '.ksssk.',
+  '...w...',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..kyk..',
+  '...k...'
+];
+const AXE = [
+  '.....w.....',
+  '.kk..k..kk.',
+  'kwsk.n.kswk',
+  'kwssknksswk',
+  'kwsssnssswk',
+  'kwssknksswk',
+  'kwsk.n.kswk',
+  '.kk.knk.kk.',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....kyk....',
+  '.....k.....'
+];
+const WARHAMMER = [
+  'kkkkkkkkkkk',
+  'kwwsssssDDk',
+  'kwssssssDDk',
+  'kwssssssDDk',
+  'ksssssssDDk',
+  'kkkkkkkkkkk',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....knk....',
+  '....kyk....',
+  '.....k.....'
+];
+const PIKE = [
+  '..w..',
+  '..wk.',
+  '.wsk.',
+  '.wsk.',
+  '.wsk.',
+  '.wsk.',
+  'kkkkk',
+  '.kyk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '.knk.',
+  '..k..'
+];
+const BOW = [
+  '.kk.....',
+  '.wnkk...',
+  '.w.nnk..',
+  '.w..nnk.',
+  '.w...nk.',
+  '.w...nnk',
+  '.w....nk',
+  '.w....yk',
+  '.w....yk',
+  '.w....nk',
+  '.w...nnk',
+  '.w...nk.',
+  '.w..nnk.',
+  '.w.nnk..',
+  '.wnkk...',
+  '.kk.....'
+];
+const STAFF = [
+  '..kkk..',
+  '.kqwqk.',
+  '.kpqpk.',
+  '.kpppk.',
+  '..kpk..',
+  '..kyk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '..knk..',
+  '...k...'
+];
+const ARROW = makeSprite([
+  'y.y.......k.',
+  '.yy.......sk',
+  'nnnnnnnnnnsw',
+  '.yy.......sk',
+  'y.y.......k.'
+], { n: '#8a5a3c' });
+const MAGIC_BOLT = makeSprite([
+  '..qqq...',
+  '.qwwwq..',
+  'qwwwwwqp',
+  '.qwwwq.p',
+  '..qqq...'
+]);
+const ICE_ARROW = makeSprite([
+  'w.w.......k.',
+  '.ww.......wk',
+  'qqqqqqqqqqww',
+  '.ww.......wk',
+  'w.w.......k.'
+], { q: '#73eff7', w: '#ffffff' });
+// Elements: an ice weapon freezes (the monster's next attack is blocked), a fire weapon
+// burns (the monster loses a heart as each of the next 2 words ends). Fire melts ice and
+// ice puts out fire. Monsters of the same element are immune.
+const ELEMENTS = {
+  ice:  { label: 'Freeze', colors: ['#ffffff', '#c8f4ff', '#73eff7', '#41a6f6'], tip: "Frozen monsters can't hit back!" },
+  fire: { label: 'Burn', colors: ['#fff6a8', '#ffe28a', '#ffcd75', '#ff8a2a', '#ff5a2a', '#b13e53'], tip: 'Burning monsters lose extra hearts!' }
+};
 // Weapon registry: add new weapons here (rows = sprite, bonus = extra damage per hit).
+// Optional: grip = where it's held, attack = 'thrust' or 'shoot' (default swing), shot = what
+// a 'shoot' weapon fires, heavy = adds a crash on impact, hitWord = the popup on a normal hit.
+// Bonuses stop at +2: with the quick bonus, +3 would end most fights in one word.
 const WEAPONS = {
   sword:  { name: 'Iron Sword',   rows: SWORD, pal: KNIGHT_PAL, bonus: 0 },
   steel:  { name: 'Steel Sword',  rows: SWORD, pal: { ...KNIGHT_PAL, s: '#8fd3ff', w: '#e8f8ff' }, bonus: 1 },
   carrot: { name: 'Carrot Sword', rows: SWORD, pal: { ...KNIGHT_PAL, s: '#ff8a2a', w: '#38b764' }, bonus: 1 },
   banana: { name: 'Banana Blade', rows: SWORD, pal: { ...KNIGHT_PAL, s: '#ffe14a', w: '#fff6a8' }, bonus: 1 },
-  fire:   { name: 'Fire Sword',   rows: SWORD, pal: { ...KNIGHT_PAL, s: '#ff5a2a', w: '#ffe28a', y: '#b13e53' }, bonus: 2 }
+  fire:   { name: 'Fire Sword',   rows: SWORD, pal: { ...KNIGHT_PAL, s: '#ff5a2a', w: '#ffe28a', y: '#b13e53' }, bonus: 1, element: 'fire' },
+  mace:   { name: 'Mace',         rows: MACE, pal: KNIGHT_PAL, bonus: 1, hitWord: 'BONK!' },
+  axe:    { name: 'Battle Axe',   rows: AXE, pal: KNIGHT_PAL, bonus: 1, grip: { x: 5.5, y: 13 }, hitWord: 'CHOP!' },
+  pike:   { name: 'Pike',         rows: PIKE, pal: KNIGHT_PAL, bonus: 1, grip: { x: 2.5, y: 15 }, attack: 'thrust', hitWord: 'JAB!' },
+  bow:    { name: 'Bow',          rows: BOW, pal: KNIGHT_PAL, bonus: 1, grip: { x: 1.5, y: 8 }, attack: 'shoot', shot: ARROW, hitWord: 'THWIP!' },
+  staff:  { name: 'Magic Staff',  rows: STAFF, pal: KNIGHT_PAL, bonus: 2, grip: { x: 3.5, y: 14 }, attack: 'shoot', shot: MAGIC_BOLT, hitWord: 'ZAP!' },
+  hammer: { name: 'Warhammer',    rows: WARHAMMER, pal: { ...KNIGHT_PAL, D: '#566c86' }, bonus: 2, grip: { x: 5.5, y: 13 }, heavy: true, hitWord: 'SMASH!' },
+  icesword: { name: 'Ice Sword',  rows: SWORD, pal: { ...KNIGHT_PAL, s: '#73eff7', w: '#ffffff', y: '#41a6f6' }, bonus: 1, element: 'ice' },
+  frostbow: { name: 'Frost Bow',  rows: BOW, pal: { ...KNIGHT_PAL, n: '#41a6f6', y: '#c8f4ff' }, bonus: 1, grip: { x: 1.5, y: 8 }, attack: 'shoot', shot: ICE_ARROW, element: 'ice', hitWord: 'THWIP!' },
+  firemace: { name: 'Fire Mace',  rows: MACE, pal: { ...KNIGHT_PAL, s: '#ff5a2a', w: '#ffe28a', y: '#b13e53' }, bonus: 1, element: 'fire', hitWord: 'BONK!' },
+  flameaxe: { name: 'Flame Axe',  rows: AXE, pal: { ...KNIGHT_PAL, s: '#ff5a2a', w: '#ffe28a' }, bonus: 1, grip: { x: 5.5, y: 13 }, element: 'fire', hitWord: 'CHOP!' }
 };
+// The better pick: more damage, or the same damage plus an element.
+function betterWeapon(a, b) {
+  const x = WEAPONS[a], y = WEAPONS[b];
+  return x.bonus > y.bonus || (x.bonus === y.bonus && !!x.element && !y.element);
+}
+function weaponStat(w) { return w.element ? `+${w.bonus} & ${ELEMENTS[w.element].label}` : `+${w.bonus} damage`; }
 for (const [id, w] of Object.entries(WEAPONS)) {
   w.normal = makeSprite(w.rows, w.pal);
   w.red = tint(w.normal, '#ff4d4d');
+  w.grip = w.grip || GRIP;
 }
+CATALOG.weapon = WEAPONS;   // no prices: weapons are only found in chests
 const WALK = ['a', 'b', 'c', 'b'];
 
 const CHEST = {
@@ -351,14 +1168,15 @@ const POTION = makeSprite([
 
 function drawKnight(cx, feetY, scale, flip, frame, ang, variant = 'normal') {
   const body = knightSprite(save.look, frame, variant);
-  const sword = WEAPONS[player.weapon][variant];
+  const weapon = WEAPONS[save.look.weapon], sword = weapon[variant];
   ctx.save();
   ctx.translate(Math.round(cx), Math.round(feetY - KNIGHT_H * scale));
   if (flip) ctx.scale(-1, 1);
   ctx.drawImage(body, -KNIGHT_W / 2 * scale, 0, KNIGHT_W * scale, KNIGHT_H * scale);
-  ctx.translate((HAND.x - KNIGHT_W / 2) * scale, HAND.y * scale);
+  const hand = (CREATURES[save.look.creature] || {}).hand || HAND;
+  ctx.translate((hand.x - KNIGHT_W / 2) * scale, hand.y * scale);
   ctx.rotate(ang);
-  ctx.drawImage(sword, -GRIP.x * scale, -GRIP.y * scale, sword.width * scale, sword.height * scale);
+  ctx.drawImage(sword, -weapon.grip.x * scale, -weapon.grip.y * scale, sword.width * scale, sword.height * scale);
   ctx.restore();
 }
 
@@ -368,7 +1186,13 @@ const ENEMY_TYPES = {
   slime:      { name: 'Slime',           spr: 'slime',      snd: 'slime',    hp: 2, scale: 2, gold: 4 },
   skeleton:   { name: 'Skeleton',        spr: 'skeleton',   snd: 'skeleton', hp: 3, scale: 2, gold: 8 },
   bat:        { name: 'Bat',             spr: 'bat',        snd: 'bat',      hp: 2, scale: 2, gold: 6, fly: true },
-  king:       { name: 'Goblin King',     spr: 'king',       snd: 'king',     hp: 5, scale: 3, gold: 30 },
+  // Level bosses guard each level's exit. The most one word can do is 4 damage (quick x2
+  // plus a +2 weapon), or 3 plus a burn tick, so 9+ hearts always takes at least 3 words.
+  bigslime:   { name: 'Big Slime',       spr: 'slime',      snd: 'slime',    hp: 9,  scale: 4, gold: 40, boss: true },
+  bigbones:   { name: 'Big Skeleton',    spr: 'skeleton',   snd: 'skeleton', hp: 10, scale: 4, gold: 50, boss: true },
+  bigghost:   { name: 'Big Ghost',       spr: 'ghost',      snd: 'ghost',    hp: 11, scale: 4, gold: 60, boss: true, fly: true },
+  bigice:     { name: 'Big Ice Goblin',  spr: 'icegoblin',  snd: 'goblin',   hp: 12, scale: 4, gold: 70, boss: true },
+  king:       { name: 'Goblin King',     spr: 'king',       snd: 'king',     hp: 14, scale: 4, gold: 100, boss: true },
   toxic:      { name: 'Toxic Slime',     spr: 'toxic',      snd: 'slime',    hp: 2, scale: 2, gold: 6 },
   swamp:      { name: 'Swamp Goblin',    spr: 'swamp',      snd: 'goblin',   hp: 2, scale: 2, gold: 7 },
   ghost:      { name: 'Ghost',           spr: 'ghost',      snd: 'ghost',    hp: 3, scale: 2, gold: 9, fly: true },
@@ -386,26 +1210,29 @@ for (const t of Object.values(ENEMY_TYPES)) {
   if (!WHITE[t.spr]) { WHITE[t.spr] = tint(S[t.spr], '#ffffff'); RED[t.spr] = tint(S[t.spr], '#ff4d4d'); }
 }
 
+for (const id of ['imp', 'firebones', 'firebat']) ENEMY_TYPES[id].element = 'fire';
+for (const id of ['frostslime', 'icegoblin', 'frostbones', 'icebat', 'bigice']) ENEMY_TYPES[id].element = 'ice';
+
 // ---------- levels ----------
 // Each level uses WORD_BANK[level] and has its own look and monsters.
 const LEVELS = [
-  { name: 'Dungeon Gate', enemies: ['goblin', 'goblin', 'slime'],
+  { name: 'Dungeon Gate', boss: 'bigslime', enemies: ['goblin', 'goblin', 'slime'],
     theme: { floor: ['#44486a', '#4a4e69'], line: '#383b58', hi: '#5a5f80', deco: '#383b58',
       wall: '#2a2d4a', mortar: '#1a1c2c', wallHi: '#3d4170',
       pil: ['#6b6f94', '#8b90b8', '#4a4e69'], flame: ['#ff9b3d', '#ffe28a'], dim: 'rgba(0,0,0,.25)' } },
-  { name: 'Slimy Sewer', enemies: ['slime', 'toxic', 'swamp', 'swamp'],
+  { name: 'Slimy Sewer', boss: 'bigbones', enemies: ['slime', 'toxic', 'swamp', 'swamp'],
     theme: { floor: ['#3b5a4a', '#3f604e'], line: '#2a4034', hi: '#58806a', deco: '#6fd1a0', puddle: true,
       wall: '#223a33', mortar: '#12241f', wallHi: '#36584c',
       pil: ['#6b9a80', '#8fc2a4', '#4a7060'], flame: ['#7df9a0', '#e0ffe8'], dim: 'rgba(0,30,10,.3)' } },
-  { name: 'Haunted Crypt', enemies: ['skeleton', 'skeleton', 'ghost', 'ghost', 'bat'],
+  { name: 'Haunted Crypt', boss: 'bigghost', enemies: ['skeleton', 'skeleton', 'ghost', 'ghost', 'bat'],
     theme: { floor: ['#4a3a5c', '#4e3e62'], line: '#2e2240', hi: '#62507a', deco: '#2e2240',
       wall: '#2a1e3a', mortar: '#160f22', wallHi: '#44335c',
       pil: ['#8a7aa8', '#a898c8', '#5e4e78'], flame: ['#c07dff', '#f0d8ff'], dim: 'rgba(20,0,40,.35)' } },
-  { name: 'Frozen Cavern', enemies: ['frostslime', 'icegoblin', 'frostbones', 'icebat', 'icebat'],
+  { name: 'Frozen Cavern', boss: 'bigice', enemies: ['frostslime', 'icegoblin', 'frostbones', 'icebat', 'icebat'],
     theme: { floor: ['#8fb8d8', '#98c0de'], line: '#6a92b4', hi: '#d0ecff', deco: '#ffffff', sparkle: true,
       wall: '#4a6e96', mortar: '#2e4a6e', wallHi: '#7ea8d0',
       pil: ['#d8f0ff', '#ffffff', '#9cc4e0'], flame: ['#7df9ff', '#ffffff'], dim: 'rgba(0,30,80,.2)' } },
-  { name: 'Lava Keep', enemies: ['imp', 'imp', 'firebones', 'firebat', 'king'],
+  { name: 'Lava Keep', boss: 'king', enemies: ['imp', 'imp', 'firebones', 'firebat', 'firebat'],
     theme: { floor: ['#4a2a2a', '#4e2c2c'], line: '#2e1618', hi: '#6a3a38', deco: '#ff7a2a', crack: true,
       wall: '#2a1414', mortar: '#140808', wallHi: '#5a2a22',
       pil: ['#7a4a42', '#a8685a', '#4e2e2a'], flame: ['#ff5a2a', '#ffe28a'], dim: 'rgba(40,0,0,.3)' } }
@@ -538,11 +1365,30 @@ const sfx = {
     drum(actx.currentTime, .045, .035, 2500 + Math.random() * 1800);
     beep(180 + Math.random() * 40, .03, 'triangle', .015);
   },
+  freeze() {
+    try {
+      [2637, 2093, 1568, 2349].forEach((f, i) => setTimeout(() => beep(f, .1, 'sine', .06, -300), i * 45));
+      drum(actx.currentTime, .25, .04, 6000);
+    } catch (e) { /* audio unavailable */ }
+  },
+  shatter() {
+    try {
+      for (let i = 0; i < 6; i++) setTimeout(() => beep(1800 + Math.random() * 1600, .05, 'triangle', .05), i * 30);
+      drum(actx.currentTime, .2, .06, 4000);
+    } catch (e) { /* audio unavailable */ }
+  },
+  burn() {
+    try { drum(actx.currentTime, .45, .08, 700); beep(150, .35, 'sawtooth', .03, 200); } catch (e) { /* audio unavailable */ }
+  },
   cry(spr) { (CRIES[spr] || CRIES.goblin)(); },
   hit() { beep(520, .08); setTimeout(() => beep(780, .15, 'square', .06, 200), 70); },
   miss() { beep(220, .35, 'sawtooth', .06, -140); },
   type() { beep(660, .03, 'square', .03); },
   win() { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => beep(f, .15), i * 110)); },
+  mastered() {
+    [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => setTimeout(() => beep(f, .14, 'square', .07), i * 90));
+    setTimeout(() => [1047, 1319, 1568].forEach(f => beep(f, .6, 'triangle', .06)), 650);
+  },
   lose() { [392, 330, 262, 196].forEach((f, i) => setTimeout(() => beep(f, .25, 'triangle', .08), i * 180)); }
 };
 
@@ -671,33 +1517,36 @@ function bestVoice() {
 }
 if ('speechSynthesis' in window) speechSynthesis.getVoices();   // voices load on first ask
 
-function speakWithBrowser(text, id) {
+// `after` runs once this finishes, unless something newer was said in the meantime.
+function speakWithBrowser(text, id, after) {
   if (!('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(text);
+  u.onend = () => { if (after && id === sayId) setTimeout(() => { if (id === sayId) after(); }, 300); };
   u.rate = 0.8; u.lang = 'en-US';
   const v = bestVoice();
   if (v) u.voice = v;
   // The best voices are online ones, so step down to the next if one can't be reached.
   u.onerror = e => {
     if (id !== sayId || e.error === 'canceled' || e.error === 'interrupted') return;
-    if (v && !v.localService) { failedVoices.add(v.name); speakWithBrowser(text, id); }
+    if (v && !v.localService) { failedVoices.add(v.name); speakWithBrowser(text, id, after); }
   };
   speechSynthesis.resume();
   // Chrome can drop a speak() issued in the same tick as cancel()
   setTimeout(() => { if (id === sayId) speechSynthesis.speak(u); }, 60);
 }
 
-function say(text) {
+function say(text, after) {
   const id = ++sayId;
-  clipPlayer.pause();
+  clipPlayer.pause(); clipPlayer.onended = null;
   if ('speechSynthesis' in window && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
   if (!text) return;
   const clip = window.VOICE_CLIPS && window.VOICE_CLIPS[clipKey(text)];
-  if (!clip) { speakWithBrowser(text, id); return; }
+  if (!clip) { speakWithBrowser(text, id, after); return; }
   clipPlayer.src = 'audio/voice/' + clip;
+  clipPlayer.onended = () => { if (after && id === sayId) setTimeout(() => { if (id === sayId) after(); }, 300); };
   clipPlayer.play().catch(e => {
     // AbortError only means a newer say() interrupted this one.
-    if (id === sayId && e.name !== 'AbortError') speakWithBrowser(text, id);
+    if (id === sayId && e.name !== 'AbortError') speakWithBrowser(text, id, after);
   });
 }
 
@@ -716,28 +1565,43 @@ async function loadWords() {
   } catch (e) { /* use local bank */ }
 }
 
-let bag = [];
-function refillBag() {
-  const bank = bankNow();
-  const pool = [...(bank[level] || [])];
-  if (!pool.length) pool.push(...Object.values(bank).flat());
-  bag = pool.map(w => [Math.random(), w]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+// Words don't belong to dungeon levels. The game practises a small set at a time: the first
+// PRACTICE_SIZE words of the grade (in word-bank order) that aren't mastered yet. When one is
+// mastered, the next word in the bank joins the set. Mastery is saved, so the set carries over.
+const PRACTICE_SIZE = 5;
+function gradeWords(g = grade) {
+  const order = [], sentences = new Map();
+  for (const entries of Object.values(WORDS[g] || WORDS[2])) for (const [w, sen] of entries) {
+    if (!sentences.has(w)) { sentences.set(w, []); order.push(w); }
+    sentences.get(w).push(sen);
+  }
+  return { order, sentences };
 }
-function drawWord() {
-  if (!bag.length) refillBag();
-  return bag.shift();
+const practiceSet = (g = grade) => gradeWords(g).order.filter(w => masteryOf(w) < MASTERED).slice(0, PRACTICE_SIZE);
+let lastWord = '', comeBack = null;   // a missed word returns after one other word
+function pickWord(set) {
+  const { order, sentences } = gradeWords();
+  if (!set.length) set = order;        // every word mastered: review them all
+  let w;
+  if (comeBack && --comeBack.in <= 0) { if (set.includes(comeBack.word)) w = comeBack.word; comeBack = null; }
+  if (!w) {
+    const choices = set.length > 1 ? set.filter(x => x !== lastWord) : set;
+    w = choices[rnd(0, choices.length - 1)];
+  }
+  lastWord = w;
+  const list = sentences.get(w) || [''];
+  return [w, list[rnd(0, list.length - 1)]];
 }
-// Cracked walls ask for one of the longest words from this level or the next.
+const drawWord = () => pickWord(practiceSet());
+// Cracked walls ask for the longest word being practised.
 function hardWord() {
-  const bank = bankNow();
-  const all = [...(bank[level] || []), ...(bank[level + 1] || [])];
-  const top = all.sort((a, b) => b[0].length - a[0].length).slice(0, 8);
-  return top[rnd(0, top.length - 1)];
+  const set = practiceSet(), top = Math.max(0, ...set.map(w => w.length));
+  return pickWord(set.filter(w => w.length === top));
 }
 
 // ---------- state ----------
 const keys = {};
-let state = 'title';          // title | explore | combat | over | win
+let state = 'title';          // title | explore | combat | menu | paused | over | win
 let level = 1, maps = {}, cur = null, curKey = '', cleared = new Set(), roomState = new Map(), props = [], solid, door, player, enemies, target = null, combat = null, chest = null, campfire = null, slide = null, pushT = 0;
 let message = { text: '', t: 0 };
 let floaters = [];
@@ -746,8 +1610,8 @@ let time = 0;
 
 const SAVE_KEY = 'spellingKnightSave';
 function defaultSave() {
-  return { gold: 0, owned: ['helmet:horned', 'color:blue', 'skin:plain'],
-    look: { helmet: 'horned', color: 'blue', skin: 'plain' } };
+  return { gold: 0, owned: ['helmet:horned', 'color:blue', 'skin:plain', 'creature:knight', 'weapon:sword', 'pet:none'],
+    look: { helmet: 'horned', color: 'blue', skin: 'plain', creature: 'knight', weapon: 'sword', pet: 'none' } };
 }
 function loadSave() {
   try {
@@ -755,6 +1619,16 @@ function loadSave() {
     const s = JSON.parse(m ? decodeURIComponent(m[1]) : localStorage.getItem(SAVE_KEY));
     if (s && Array.isArray(s.owned) && s.look && HELMETS[s.look.helmet] && COLORS[s.look.color] && SKINS[s.look.skin]) {
       s.gold = Number(s.gold) || 0;
+      // Saves from before creatures existed have neither of these.
+      if (!s.owned.includes('creature:knight')) s.owned.push('creature:knight');
+      if (!CREATURES[s.look.creature] || !s.owned.includes(`creature:${s.look.creature}`)) s.look.creature = 'knight';
+      // Weapons used to belong to a run, so an old save's weapon is the one in its saved progress.
+      const carried = s.progress && WEAPONS[s.progress.weapon] ? s.progress.weapon : null;
+      if (!s.owned.includes('weapon:sword')) s.owned.push('weapon:sword');
+      if (carried && !s.owned.includes(`weapon:${carried}`)) s.owned.push(`weapon:${carried}`);
+      if (!WEAPONS[s.look.weapon] || !s.owned.includes(`weapon:${s.look.weapon}`)) s.look.weapon = carried || 'sword';
+      if (!s.owned.includes('pet:none')) s.owned.push('pet:none');
+      if (!PETS[s.look.pet] || !s.owned.includes(`pet:${s.look.pet}`)) s.look.pet = 'none';
       return s;
     }
   } catch (e) { /* fall through to a fresh save */ }
@@ -832,7 +1706,10 @@ function genMap(lvl) {
   const camp = rooms[Math.floor(rooms.length / 2)];
   camp.kind = 'camp';
 
-  const fights = rooms.filter(rm => rm.kind === 'path');
+  // The last room holds the level's boss, and its door onward stays shut until the boss falls.
+  const exitRoom = rooms[rooms.length - 1];
+  exitRoom.bossRoom = true; exitRoom.enemies = [LEVELS[lvl - 1].boss];
+  const fights = rooms.filter(rm => rm.kind === 'path' && rm !== exitRoom);
   list.forEach((type, i) => fights[Math.floor(i * fights.length / list.length)].enemies.push(type));
 
   for (let want = rnd(1, 2), tries = 0; want > 0 && tries < 40; tries++) {
@@ -880,11 +1757,9 @@ function nextLevel() {
   if (level >= LAST_LEVEL) { endGame(true); return; }
   const m = getMap(level + 1);
   if (!cleared.has(rkey(level + 1, m.entry))) player.hp = Math.min(MAX_HP, player.hp + 1);
-  bag = [];
   enterRoom(level + 1, m.entry, 'S');
 }
 function prevLevel() {
-  bag = [];
   enterRoom(level - 1, getMap(level - 1).exit, 'N');
 }
 function openDoors() {
@@ -895,11 +1770,11 @@ const nearDoor = (c, r) => (c >= 8 && c <= 11 && r >= 7 && r <= 10) ||
   Object.keys(cur.doors).some(d => cur.doors[d] && DOOR_TILES[d].some(([tr, tc]) => Math.abs(tr - r) <= 3 && Math.abs(tc - c) <= 3));
 
 function resetRun(lvl = 1, prog = null) {
-  maps = {}; roomState = new Map(); cleared = new Set(); bag = [];
+  maps = {}; roomState = new Map(); cleared = new Set(); lastWord = ''; comeBack = null;
   flyers = []; sparks = []; pulses = [];
   stats = { correct: 0, quick: 0, gold: 0, missed: new Set() };
   player = { x: 152, y: 140, hp: prog ? Math.max(1, Math.min(MAX_HP, prog.hp | 0)) : MAX_HP,
-    face: 1, moving: false, weapon: prog ? prog.weapon : 'sword' };
+    face: 1, moving: false };
   // Everything before the starting point counts as already cleared.
   for (let l = 1; l < lvl; l++) for (const rm of getMap(l).rooms) cleared.add(rkey(l, rm));
   const m = getMap(lvl);
@@ -939,7 +1814,7 @@ function buildLevel(from = 'S') {
   door = { open: false };
   slide = null; pushT = 0;
   const camp = cur.kind === 'camp', leaf = cur.kind === 'leaf', boss = cur.kind === 'boss';
-  for (let i = 0; i < (camp ? 2 : 3 + level); i++) {
+  for (let i = 0; i < (camp ? 2 : cur.bossRoom ? 0 : 3 + level); i++) {
     const c = rnd(3, 16), r = rnd(3, 9);
     if (nearDoor(c, r) || (camp && c >= 6 && c <= 13 && r >= 4 && r <= 9)) continue;
     if (cur.secret && Math.abs(c - cur.secret.col) <= 1 && r <= 4) continue;
@@ -960,6 +1835,7 @@ function buildLevel(from = 'S') {
   else if (boss) [player.x, player.y] = [152, 110];
   else [player.x, player.y] = SPAWN[from];
   target = null; campfire = null; enemies = [];
+  placePet();
 
   let st = roomState.get(curKey);
   const fresh = !st;
@@ -974,9 +1850,9 @@ function buildLevel(from = 'S') {
   if (!done) {
     for (const type of cur.enemies) {
       for (let tries = 0; tries < 200; tries++) {
-        const x = rnd(24, 280), y = rnd(48, 160);
+        const x = cur.bossRoom && tries < 100 ? rnd(136, 168) : rnd(24, 280), y = cur.bossRoom && tries < 100 ? rnd(62, 68) : rnd(48, 160);
         if (feetBlocked(x, y)) continue;
-        if (Math.hypot(x - player.x, y - player.y) < 90) continue;
+        if (Math.hypot(x - player.x, y - player.y) < (cur.bossRoom ? 70 : 90)) continue;
         if (enemies.some(e => Math.hypot(e.x - x, e.y - y) < 36)) continue;
         const en = { type, ...ENEMY_TYPES[type], maxHp: ENEMY_TYPES[type].hp, x, y,
           dx: 0, dy: 0, timer: Math.random() * 2, bob: Math.random() * 6 };
@@ -989,7 +1865,8 @@ function buildLevel(from = 'S') {
       }
     }
   }
-  if (camp) say_msg('A quiet room. Walk up to the fire!', 4);
+  if (cur.bossRoom && !done) { say_msg(`BOSS: ${enemies[0] ? enemies[0].name : ''}!`, 5); sfx.rumble(); }
+  else if (camp) say_msg('A quiet room. Walk up to the fire!', 4);
   else if (boss) say_msg(done ? 'The hidden cellar' : 'A hidden cellar! A BIG monster!', 4);
   else if (leaf) say_msg(chest && chest.state === 'closed' ? 'A secret room! Open the chest!' : 'A secret room', 3);
   else if (cur === getMap(level).entry) say_msg(`Level ${level}: ${LEVELS[level - 1].name}`, 4);
@@ -1002,6 +1879,17 @@ function say_msg(text, t = 3) { message = { text, t }; }
 addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
   if (!masteryEl.hidden) { if (k === 'escape') closeMastery(); return; }
+  if (k === 'escape' && (state === 'explore' || state === 'combat')) { e.preventDefault(); pauseGame(); return; }
+  if (state === 'paused') { if (k === 'escape') { overlay.hidden = true; resumeGame(); } return; }
+  if (state === 'combat' && !masteredEl.hidden) {
+    if (k === 'enter' || k === ' ') { e.preventDefault(); closeMastered(); }
+    return;
+  }
+  if (state === 'combat' && !fixEl.hidden) {
+    if (k === 'enter' || k === ' ') { e.preventDefault(); closeFix(); }
+    else if (k === 'tab') { e.preventDefault(); say(fixEl.dataset.word); }
+    return;
+  }
   if (state === 'combat') {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (/^[a-z]$/.test(k)) typeLetter(k);
@@ -1025,11 +1913,16 @@ function canvasPoint(e) {
   return { x: (e.clientX - r.left) / r.width * W, y: (e.clientY - r.top) / r.height * H };
 }
 const overAvatar = p => p.x >= AVATAR.x && p.x <= AVATAR.x + AVATAR.s && p.y >= AVATAR.y && p.y <= AVATAR.y + AVATAR.s;
-cv.addEventListener('mousemove', e => { cv.style.cursor = state === 'explore' && overAvatar(canvasPoint(e)) ? 'pointer' : 'default'; });
+const overWeaponSlot = p => p.x >= AVATAR.x - AVATAR.s - 4 && p.x <= AVATAR.x - 4 && p.y >= AVATAR.y && p.y <= AVATAR.y + AVATAR.s;
+cv.addEventListener('mousemove', e => {
+  const p = canvasPoint(e);
+  cv.style.cursor = state === 'explore' && (overAvatar(p) || overWeaponSlot(p)) ? 'pointer' : 'default';
+});
 cv.addEventListener('mousedown', e => {
   if (state !== 'explore') return;
   const p = canvasPoint(e);
   if (overAvatar(p)) { openWardrobe(); return; }
+  if (overWeaponSlot(p)) { wTab = 'weapon'; openWardrobe(); return; }
   target = p;
 });
 
@@ -1038,7 +1931,8 @@ const wardrobe = document.getElementById('wardrobe');
 const wGrid = document.getElementById('wGrid'), wTabs = document.getElementById('wTabs');
 const wGold = document.getElementById('wGold'), wMsg = document.getElementById('wMsg');
 const wPreview = document.getElementById('wPreview'), wpx = wPreview.getContext('2d');
-const TABS = [['helmet', 'Helmets'], ['color', 'Armor'], ['skin', 'Skins']];
+const TABS = [['helmet', 'Helmets'], ['color', 'Armor'], ['skin', 'Skins'], ['weapon', 'Weapons'], ['creature', 'Creatures'], ['pet', 'Pets']];
+const ARMOR_TABS = ['helmet', 'color', 'skin'];   // these only show on the knight
 let wTab = 'helmet';
 document.getElementById('wClose').onclick = () => closeWardrobe();
 
@@ -1055,10 +1949,39 @@ function previewCanvas(look, size) {
   g.drawImage(knightSprite(look, 'idle', 'normal'), (size - 18) / 2, (size - 18) / 2);
   return c;
 }
+function petCanvas(id, size) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+  const P = PETS[id];
+  if (P.imgA) g.drawImage(P.imgA, Math.floor((size - P.imgA.width) / 2), Math.floor((size - P.imgA.height) / 2));
+  else { g.fillStyle = '#566c86'; g.fillRect(6, 10, 10, 2); }   // "no pet": a dash
+  return c;
+}
 function renderPreview() {
   wpx.imageSmoothingEnabled = false;
   wpx.clearRect(0, 0, 24, 24);
+  // On the Pets tab, show the pet itself, nice and big.
+  const P = PETS[save.look.pet];
+  if (wTab === 'pet' && P && P.imgA) {
+    const img = Math.floor(time * 3) % 2 ? P.imgB : P.imgA;
+    wpx.drawImage(img, Math.floor((24 - img.width) / 2), Math.floor((24 - img.height) / 2));
+    return;
+  }
   wpx.drawImage(knightSprite(save.look, 'idle', 'normal'), 3, 3);
+  const hand = (CREATURES[save.look.creature] || {}).hand || HAND;
+  wpx.save();
+  wpx.translate(3 + hand.x, 3 + hand.y);
+  wpx.rotate(0.35);   // the same angle as when walking around
+  const weapon = WEAPONS[save.look.weapon];
+  wpx.drawImage(weapon.normal, -weapon.grip.x, -weapon.grip.y);
+  wpx.restore();
+}
+function weaponCanvas(id, found, size) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+  const spr = found ? WEAPONS[id].normal : tint(WEAPONS[id].normal, '#1a1c2c');   // a mystery until found
+  g.drawImage(spr, Math.floor((size - spr.width) / 2), Math.floor((size - spr.height) / 2));
+  return c;
 }
 function renderWardrobe() {
   wGold.textContent = `${save.gold} G`;
@@ -1072,13 +1995,18 @@ function renderWardrobe() {
   wGrid.innerHTML = '';
   for (const [id, item] of Object.entries(CATALOG[wTab])) {
     const owned = save.owned.includes(`${wTab}:${id}`);
-    const on = save.look[wTab] === id;
+    // Armor only shows on the knight, so those tabs always preview it on the knight.
+    const asKnight = ARMOR_TABS.includes(wTab);
+    const on = save.look[wTab] === id && (!asKnight || save.look.creature === 'knight');
     const card = document.createElement('button');
-    card.className = 'card' + (on ? ' on' : '') + (!owned && save.gold < item.price ? ' poor' : '');
-    card.appendChild(previewCanvas({ ...save.look, [wTab]: id }, 22));
+    card.className = 'card' + (on ? ' on' : '') + (!owned && !(save.gold >= item.price) ? ' poor' : '');
+    card.appendChild(wTab === 'weapon' ? weaponCanvas(id, owned, 22) : wTab === 'pet' ? petCanvas(id, 22)
+      : previewCanvas({ ...save.look, ...(asKnight ? { creature: 'knight' } : {}), [wTab]: id }, 22));
     const n = document.createElement('div'); n.className = 'cname'; n.textContent = item.name;
     const s = document.createElement('div'); s.className = 'cstat';
-    s.textContent = on ? 'WORN' : owned ? 'OWNED' : `${item.price} G`;
+    s.textContent = wTab === 'weapon'
+      ? (on ? 'EQUIPPED' : owned ? weaponStat(item) : 'Find in chests')
+      : (on ? (wTab === 'pet' ? (id === 'none' ? 'PICKED' : 'WITH YOU') : 'WORN') : owned ? 'OWNED' : `${item.price} G`);
     card.append(n, s);
     card.onclick = () => pick(wTab, id);
     wGrid.appendChild(card);
@@ -1087,6 +2015,7 @@ function renderWardrobe() {
 function pick(cat, id) {
   const item = CATALOG[cat][id], key = `${cat}:${id}`;
   if (!save.owned.includes(key)) {
+    if (cat === 'weapon') { wMsg.textContent = 'Open chests to find this one!'; sfx.miss(); return; }
     if (save.gold < item.price) {
       wMsg.textContent = `Need ${item.price - save.gold} more gold!`; sfx.miss(); return;
     }
@@ -1094,7 +2023,51 @@ function pick(cat, id) {
     wMsg.textContent = `Bought ${item.name}!`;
     beep(1568, .08); setTimeout(() => beep(2093, .2), 80);
   } else wMsg.textContent = '';
-  save.look[cat] = id; persist(); renderWardrobe();
+  save.look[cat] = id;
+  if (cat === 'weapon') wMsg.textContent = `Equipped ${item.name}! ${weaponStat(item)}` + (item.element ? `. ${ELEMENTS[item.element].tip}` : '');
+  if (cat === 'pet') { placePet(); if (id !== 'none') wMsg.textContent = `Your ${item.name} will follow you!`; }
+  // Picking armor while playing as a creature goes back to the knight, so it can be seen.
+  if (ARMOR_TABS.includes(cat) && save.look.creature !== 'knight') {
+    save.look.creature = 'knight';
+    if (!wMsg.textContent) wMsg.textContent = 'Back to the knight!';
+  }
+  persist(); renderWardrobe();
+}
+
+// ---------- pet following ----------
+const pet = { x: 0, y: 0, face: 1, moving: false };
+function placePet() { pet.x = player.x - 16 * player.face; pet.y = player.y + 4; pet.face = player.face; pet.moving = false; }
+function updatePet(dt) {
+  const P = PETS[save.look.pet];
+  if (!P || !P.a) return;
+  // Trots to a spot just behind the knight, hurrying if it falls far back.
+  const tx = player.x - 16 * player.face, ty = player.y + 4;
+  const dx = tx - pet.x, dy = ty - pet.y, d = Math.hypot(dx, dy);
+  pet.moving = d > 3;
+  if (pet.moving) {
+    const step = Math.min(d, (d > 40 ? 130 : 66) * dt);
+    pet.x += dx / d * step; pet.y += dy / d * step;
+    if (Math.abs(dx) > 1) pet.face = dx > 0 ? 1 : -1;
+  } else pet.face = player.face;
+  if (P.ember && Math.random() < dt * 1.2) burst(pet.x + 8 + pet.face * 7, pet.y + 2, ['#ff8a2a', '#ffcd75'], 3);
+}
+function drawPet(cx, feetY, scale, moving, face) {
+  const P = PETS[save.look.pet];
+  if (!P || !P.a) return;
+  let img = P.imgA, off = 0;
+  const flap = Math.floor(time * 8) % 2;
+  if (P.move === 'fly' || P.move === 'float') {
+    off = (P.move === 'fly' ? -10 : -6) + Math.sin(time * 4) * 2;
+    if (P.move === 'fly' || moving) img = flap ? P.imgB : P.imgA;
+    ctx.fillStyle = 'rgba(0,0,0,.25)';
+    ctx.fillRect(Math.round(cx - 3 * scale), Math.round(feetY - scale), 6 * scale, scale);
+  } else if (P.move === 'hop') {
+    const h = Math.abs(Math.sin(time * (moving ? 9 : 2.5)));
+    off = -h * (moving ? 5 : 1.5); img = h > .5 ? P.imgB : P.imgA;
+  } else if (moving) img = Math.floor(time * 7) % 2 ? P.imgB : P.imgA;
+  ctx.globalAlpha = P.alpha || 1;
+  spriteAt(img, cx, feetY + Math.round(off * scale), scale, face < 0);
+  ctx.globalAlpha = 1;
 }
 
 // ---------- explore ----------
@@ -1126,6 +2099,7 @@ function updateExplore(dt) {
   }
   if (dx) player.face = dx > 0 ? 1 : -1;
 
+  updatePet(dt);
   for (const e of enemies) {
     if (e.wake > 0) {
       e.wake -= dt;
@@ -1138,14 +2112,14 @@ function updateExplore(dt) {
       const a = Math.random() * Math.PI * 2, still = Math.random() < 0.3;
       e.dx = still ? 0 : Math.cos(a); e.dy = still ? 0 : Math.sin(a);
     }
-    const spd = (e.fly ? 30 : 14) * dt;
+    const spd = (e.boss ? 8 : e.fly ? 30 : 14) * dt;
     const nx = e.x + e.dx * spd, ny = e.y + e.dy * spd;
     if (!feetBlocked(nx, e.y)) e.x = nx; else e.dx = -e.dx;
     if (!feetBlocked(e.x, ny)) e.y = ny; else e.dy = -e.dy;
   }
 
   for (const e of enemies) {
-    if (!e.wake && Math.hypot(e.x - player.x, e.y - player.y) < 13) { startCombat(e); return; }
+    if (!e.wake && Math.hypot(e.x - player.x, e.y - player.y) < (e.boss ? 22 : 13)) { startCombat(e); return; }
   }
   const sp = cur.stairs;
 
@@ -1235,7 +2209,7 @@ function updateCampfire() {
   if (d < 26 && !campfire.near) {
     campfire.near = true;
     player.hp = MAX_HP;
-    save.progress = { grade, level, stage: 1, hp: player.hp, weapon: player.weapon }; persist();
+    save.progress = { grade, level, stage: 1, hp: player.hp }; persist();
     sfx.pickup(); say_msg('Rested and saved your game!', 3);
     burst(campfire.x, campfire.y - 6, ['#ffcd75', '#ef7d57', '#fff1b8']);
   } else if (d > 44) campfire.near = false;
@@ -1265,12 +2239,15 @@ function spawnChest() {
   if (st) st.chest = chest;
 }
 function rollReward() {
-  const upgrades = Object.keys(WEAPONS).filter(id => WEAPONS[id].bonus > WEAPONS[player.weapon].bonus);
+  const unfound = Object.keys(WEAPONS).filter(id => !save.owned.includes(`weapon:${id}`));
   const hurt = player.hp < MAX_HP;
   let kind = Math.random() < 0.5 ? 'weapon' : 'potion';
-  if (kind === 'weapon' && !upgrades.length) kind = hurt ? 'potion' : 'gold';
-  if (kind === 'potion' && !hurt) kind = upgrades.length ? 'weapon' : 'gold';
-  if (kind === 'weapon') return { kind, id: upgrades[rnd(0, upgrades.length - 1)] };
+  if (kind === 'weapon' && !unfound.length) kind = hurt ? 'potion' : 'gold';
+  if (kind === 'potion' && !hurt) kind = unfound.length ? 'weapon' : 'gold';
+  if (kind === 'weapon') {
+    const id = unfound[rnd(0, unfound.length - 1)];
+    return { kind, id, equip: betterWeapon(id, save.look.weapon) };
+  }
   return { kind };
 }
 function openChest() {
@@ -1295,12 +2272,16 @@ function mimicLoot(m) {
   sfx.chestOpen();
 }
 function rewardMessage(r) {
-  if (r.kind === 'weapon') say_msg(`Found ${WEAPONS[r.id].name}! +${WEAPONS[r.id].bonus} damage`, 4);
+  if (r.kind === 'weapon') say_msg(r.equip ? `Found ${WEAPONS[r.id].name}! ${weaponStat(WEAPONS[r.id])}` : `New weapon: ${WEAPONS[r.id].name}!`, 4);
   else if (r.kind === 'potion') say_msg('Health potion! +2 hearts', 4);
   else say_msg('A pile of gold! +20 gold', 4);
 }
 function applyReward(r) {
-  if (r.kind === 'weapon') player.weapon = r.id;
+  if (r.kind === 'weapon') {
+    if (!save.owned.includes(`weapon:${r.id}`)) save.owned.push(`weapon:${r.id}`);
+    if (r.equip) save.look.weapon = r.id;
+    persist();
+  }
   else if (r.kind === 'potion') player.hp = Math.min(MAX_HP, player.hp + 2);
   else { save.gold += 20; stats.gold += 20; persist(); }
 }
@@ -1447,6 +2428,7 @@ function wallEnemy(sc) {
 function startCombat(enemy) {
   state = 'combat'; target = null;
   combat = { enemy, word: '', sentence: '', typed: '', locked: true, anim: null, flash: 0 };
+  enemy.frozen = false; enemy.burn = 0; cfx = [];
   panel.hidden = false;
   sfx.stinger();
   nextWord();
@@ -1462,7 +2444,8 @@ function nextWord() {
   const blanks = Array(word.length).fill('_').join('\u00A0');
   sentenceEl.textContent = sentence.replace(new RegExp('\\b' + word + '\\b', 'i'), blanks);
   renderSlots();
-  setTimeout(() => { if (combat && combat.word === word) say(word); }, 350);
+  // The word, then the whole sentence it's used in.
+  setTimeout(() => { if (combat && combat.word === word && state === 'combat') say(word, () => say(sentence)); }, 350);
 }
 
 function renderSlots() {
@@ -1490,49 +2473,58 @@ function backspace() {
 function submit() {
   if (!combat || combat.locked || !combat.typed.length) return;
   const c = combat; c.locked = true;
+  say('');   // stop the word/sentence once an answer is in
   if (c.typed.toLowerCase() === c.word) {
     const quick = c.timeLeft > 0;
     stats.correct++; if (quick) stats.quick++;
-    c.enemy.hp = Math.max(0, c.enemy.hp - (quick ? 2 : 1) - WEAPONS[player.weapon].bonus);
+    c.enemy.hp = Math.max(0, c.enemy.hp - (quick ? 2 : 1) - WEAPONS[save.look.weapon].bonus);
     c.reveal = 'good'; renderSlots();
-    if (scoreWord(c.word, 1)) addFloater('MASTERED!', '#ffd23f', 'knight', 0.3);
-    if (c.enemy.hp <= 0 && !c.enemy.wall) {
-      const g = c.enemy.gold + rnd(0, 2);
-      save.gold += g; stats.gold += g; persist();
-      addFloater(`+${g} GOLD`, '#ffd23f', 'enemy', 0.5, 16);
-      setTimeout(() => { beep(1568, .08); setTimeout(() => beep(2093, .2), 80); }, 500);
+    const setBefore = practiceSet();
+    if (scoreWord(c.word, 1)) {
+      addFloater('MASTERED!', '#ffd23f', 'knight', 0.3);
+      c.mastered = { word: c.word, added: practiceSet().filter(w => !setBefore.includes(w)) };
     }
-    c.anim = { kind: 'hit', t: 0, dur: c.enemy.hp <= 0 ? 1.3 : 0.9 };
+    if (c.enemy.hp <= 0 && !c.enemy.wall) awardGold(c.enemy, 0.5);
+    // The element (freeze or burn) lands with the blow; see landElement.
+    const element = c.enemy.wall || c.enemy.hp <= 0 ? null : WEAPONS[save.look.weapon].element;
+    c.anim = { kind: 'hit', t: 0, dur: c.enemy.hp <= 0 ? 1.3 : 0.9, element };
     sfx.attack();
-    setTimeout(() => { sfx.hit(); if (c.enemy.wall) sfx.smash(); else sfx.cry(c.enemy.snd); }, 200);
+    setTimeout(() => {
+      sfx.hit();
+      if (c.enemy.wall || WEAPONS[save.look.weapon].heavy) sfx.smash();
+      if (!c.enemy.wall) sfx.cry(c.enemy.snd);
+    }, 200);
     if (quick) { addFloater('QUICK! x2', '#7df9ff', 'enemy'); setTimeout(() => beep(1175, .2, 'square', .06), 150); }
-    else addFloater('SLASH!', '#ffcd75', 'enemy');
+    else addFloater(WEAPONS[save.look.weapon].hitWord || 'SLASH!', '#ffcd75', 'enemy');
   } else {
     stats.missed.add(c.word);
     scoreWord(c.word, -1);
     if (!c.enemy.wall) {
-      // Re-queue so the word comes back soon.
-      bag.splice(Math.min(2, bag.length), 0, [c.word, c.sentence]);
-      player.hp--;
+      // The word comes back soon.
+      comeBack = { word: c.word, in: 2 };
+      if (!c.enemy.frozen) player.hp--;   // a frozen monster can't hit back
     }
     c.reveal = 'show';
     renderSlots(); [...slotsEl.children].forEach(s => { s.classList.remove('reveal'); s.classList.add('wrong'); });
-    c.anim = { kind: 'miss', t: 0, dur: c.enemy.wall ? 1.6 : 2.2 };
+    c.anim = { kind: 'miss', t: 0, dur: c.enemy.wall ? 1.4 : 1.3, blocked: !c.enemy.wall && !!c.enemy.frozen };
     sfx.miss(); addFloater(c.enemy.wall ? 'OH NO!' : 'MISS!', '#ff6b6b', 'knight');
+    if (c.anim.blocked) addFloater('BLOCKED!', '#73eff7', 'enemy', 0.3);
   }
 }
 
 function finishAnim() {
   const c = combat, kind = c.anim.kind; c.anim = null;
-  if (kind === 'miss') {
-    if (c.enemy.wall) { wallDone(c.enemy.sc, false); return; }
-    if (player.hp <= 0) { endGame(false); return; }
-    nextWord();
-  } else if (kind === 'hit') {
-    if (c.enemy.hp <= 0) {
-      c.anim = { kind: 'die', t: 0, dur: 0.7 };
-      if (c.enemy.wall) sfx.smash(); else sfx.death(c.enemy.snd);
-    } else nextWord();
+  if (kind === 'miss') { showFix(c.typed, c.word, () => afterMiss(c)); return; }
+  if (kind === 'burn') nextWord();
+  else if (kind === 'hit') {
+    const go = () => {
+      if (combat !== c) return;
+      if (c.enemy.hp <= 0) {
+        c.anim = { kind: 'die', t: 0, dur: 0.7 };
+        if (c.enemy.wall) sfx.smash(); else sfx.death(c.enemy.snd);
+      } else if (!burnTick(c)) nextWord();
+    };
+    if (c.mastered) { const m = c.mastered; c.mastered = null; showMastered(m, go); } else go();
   } else if (kind === 'die') {
     if (c.enemy.wall) { wallDone(c.enemy.sc, true); return; }
     const ex = c.enemy.x + 8, ey = c.enemy.y;
@@ -1542,8 +2534,186 @@ function finishAnim() {
     if (c.enemy.mimic) { mimicLoot(c.enemy); say_msg('The Mimic is defeated! Take the loot!', 4); sfx.win(); }
     else if (!enemies.length) {
       cleared.add(curKey); openDoors(); spawnChest();
-      say_msg('A chest appeared! The doors are open!', 5); sfx.win();
+      say_msg(c.enemy.boss ? `You beat the ${c.enemy.name}! The way is open!` : 'A chest appeared! The doors are open!', 5); sfx.win();
     } else say_msg(`${enemies.length} monster${enemies.length > 1 ? 's' : ''} left`, 2);
+  }
+}
+function afterMiss(c) {
+  if (combat !== c) return;
+  if (c.enemy.wall) { wallDone(c.enemy.sc, false); return; }
+  if (player.hp <= 0) { endGame(false); return; }
+  if (c.enemy.frozen) {
+    // The ice did its job: it shatters.
+    c.enemy.frozen = false; const m = enemyMid(c.enemy);
+    elementBurst('ice', m.x, m.y, 30); sfx.shatter();
+  }
+  if (!burnTick(c)) nextWord();
+}
+
+// ---------- misspelling popup ----------
+const fixEl = document.getElementById('fix');
+let fixDone = null;
+document.getElementById('fixOk').onclick = () => closeFix();
+document.getElementById('fixHear').onclick = e => { e.currentTarget.blur(); if (fixEl.dataset.word) say(fixEl.dataset.word); };
+// Lines the two spellings up (longest common subsequence) so only the letters that
+// differ are marked: extra or wrong letters in yours, missed letters in the right one.
+function spellingDiff(a, b) {
+  const L = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+  for (let i = a.length - 1; i >= 0; i--) for (let j = b.length - 1; j >= 0; j--)
+    L[i][j] = a[i] === b[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const okA = Array(a.length).fill(false), okB = Array(b.length).fill(false);
+  for (let i = 0, j = 0; i < a.length && j < b.length;) {
+    if (a[i] === b[j]) { okA[i++] = okB[j++] = true; }
+    else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++;
+  }
+  return { okA, okB };
+}
+function fillWord(el, word, ok, cls) {
+  el.innerHTML = '';
+  [...word].forEach((ch, i) => { const t = document.createElement('i'); t.textContent = ch; if (!ok[i]) t.className = cls; el.appendChild(t); });
+}
+function showFix(typed, word, done) {
+  typed = typed.toLowerCase();
+  const { okA, okB } = spellingDiff(typed, word);
+  fillWord(document.getElementById('fixTyped'), typed, okA, 'bad');
+  fillWord(document.getElementById('fixRight'), word, okB, 'fix');
+  fixEl.dataset.word = word; fixEl.hidden = false; fixDone = done;
+  say(word);
+}
+function closeFix() {
+  if (fixEl.hidden) return;
+  fixEl.hidden = true; document.getElementById('fixOk').blur();
+  const f = fixDone; fixDone = null;
+  if (f) f();
+}
+
+// ---------- mastery celebration ----------
+const masteredEl = document.getElementById('mastered');
+let masteredDone = null;
+document.getElementById('mdOk').onclick = () => closeMastered();
+const CONFETTI = ['#ffd23f', '#ff6b6b', '#73eff7', '#a7f070', '#ff9df5', '#ffffff'];
+function showMastered(m, done) {
+  const wordEl = document.getElementById('mdWord');
+  wordEl.innerHTML = '';
+  [...m.word].forEach((ch, i) => { const t = document.createElement('i'); t.textContent = ch; t.style.animationDelay = (i * 0.07) + 's'; wordEl.appendChild(t); });
+  const { order } = gradeWords(), count = order.filter(w => masteryOf(w) >= MASTERED).length;
+  document.getElementById('mdCount').textContent = `${count} of ${order.length} ${ordinal(grade)} grade words mastered`;
+  document.getElementById('mdNote').textContent = m.added.length ? 'A new word joins your practice!'
+    : count >= order.length ? `You mastered EVERY ${ordinal(grade)} grade word!` : '';
+  const box = document.getElementById('mdConfetti');
+  box.innerHTML = '';
+  for (let i = 0; i < 40; i++) {
+    const b = document.createElement('b');
+    b.style.left = rnd(0, 100) + '%'; b.style.background = CONFETTI[i % CONFETTI.length];
+    b.style.animationDelay = (Math.random() * 0.8) + 's'; b.style.animationDuration = (1.6 + Math.random() * 1.4) + 's';
+    b.style.setProperty('--drift', rnd(-40, 40) + 'px');
+    box.appendChild(b);
+  }
+  masteredEl.hidden = false; masteredDone = done;
+  sfx.mastered();
+  say(m.word, () => say('Mastered!'));
+}
+function closeMastered() {
+  if (masteredEl.hidden) return;
+  masteredEl.hidden = true; document.getElementById('mdOk').blur();
+  say('');
+  const f = masteredDone; masteredDone = null;
+  if (f) f();
+}
+
+function awardGold(e, delay) {
+  const g = e.gold + rnd(0, 2);
+  save.gold += g; stats.gold += g; persist();
+  addFloater(`+${g} GOLD`, '#ffd23f', 'enemy', delay, 16);
+  setTimeout(() => { beep(1568, .08); setTimeout(() => beep(2093, .2), 80); }, delay * 1000);
+}
+
+// ---------- elements ----------
+let cfx = [];   // combat particles
+const C_FEET = 100, C_KX = 60, C_EX = 245;
+function enemyMid(e) { return { x: C_EX, y: C_FEET - (e.fly ? 8 : 0) - S[e.spr].height * e.scale / 2 }; }
+function landElement(e, el) {
+  const m = enemyMid(e);
+  if (e.element === el) { elementBurst(el, m.x, m.y, 8); addFloater('IMMUNE!', '#c0cbdc', 'enemy', 0.25, 12); return; }
+  elementBurst(el, m.x, m.y, 34);
+  if (el === 'ice') {
+    e.frozen = true; e.burn = 0;
+    addFloater('FROZEN!', '#73eff7', 'enemy', 0.25, 12); sfx.freeze();
+  } else {
+    e.burn = 2; e.burnFresh = true; e.frozen = false;
+    addFloater('ON FIRE!', '#ff8a2a', 'enemy', 0.25, 12); sfx.burn();
+  }
+}
+// As a word ends, a burning monster loses a heart. Returns true if it started an animation.
+function burnTick(c) {
+  const e = c.enemy;
+  if (!e.burn || e.hp <= 0) return false;
+  if (e.burnFresh) { e.burnFresh = false; return false; }   // not on the word that lit it
+  e.burn--; e.hp = Math.max(0, e.hp - 1);
+  const m = enemyMid(e);
+  elementBurst('fire', m.x, m.y, 20); sfx.burn();
+  addFloater('BURN! -1', '#ff8a2a', 'enemy');
+  if (e.hp <= 0) {
+    awardGold(e, 0.3);
+    c.anim = { kind: 'die', t: 0, dur: 0.7 }; sfx.death(e.snd);
+  } else c.anim = { kind: 'burn', t: 0, dur: 0.7 };
+  return true;
+}
+function emitElement(el, x, y, sparkle) {
+  const cols = ELEMENTS[el].colors, c = cols[Math.floor(Math.random() * cols.length)];
+  if (el === 'fire') cfx.push({ x, y, vx: (Math.random() - .5) * 20, vy: -15 - Math.random() * 30, g: -20,
+    t: 0, life: .3 + Math.random() * .4, c, s: Math.random() < .4 ? 3 : 2, ramp: true });
+  else {
+    const sp = sparkle ? 4 : 30;
+    cfx.push({ x, y, vx: (Math.random() - .5) * sp, vy: (Math.random() - .5) * sp, g: sparkle ? 0 : 50,
+      t: 0, life: .3 + Math.random() * .4, c, s: Math.random() < .3 ? 2 : 1, twinkle: true });
+  }
+}
+function elementBurst(el, x, y, n) {
+  const cols = ELEMENTS[el].colors, fire = el === 'fire';
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * Math.PI * 2, sp = 30 + Math.random() * 60;
+    cfx.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (fire ? 30 : 10), g: fire ? -10 : 90,
+      t: 0, life: .4 + Math.random() * .4, c: cols[i % cols.length], s: 2 + (i % 2), ramp: fire, twinkle: !fire });
+  }
+}
+function drawCfx(dt) {
+  for (const p of cfx) { p.t += dt; p.x += p.vx * dt; p.y += p.vy * dt; p.vy += p.g * dt; }
+  cfx = cfx.filter(p => p.t < p.life);
+  const hot = ELEMENTS.fire.colors;
+  for (const p of cfx) {
+    const k = 1 - p.t / p.life;
+    ctx.globalAlpha = p.twinkle ? (Math.floor(p.t * 30) % 2 ? 1 : .5) * k : Math.min(1, k * 1.5);
+    // Flames cool from yellow to red as they rise.
+    ctx.fillStyle = p.ramp ? hot[Math.min(hot.length - 1, Math.floor((1 - k) * hot.length))] : p.c;
+    const sz = p.ramp ? Math.max(1, Math.round(p.s * k + .4)) : p.s;
+    ctx.fillRect(Math.round(p.x), Math.round(p.y), sz, sz);
+  }
+  ctx.globalAlpha = 1;
+}
+const ICE_T = {}, FIRE_T = {};
+function drawStatus(e, cx, feetY, scale, alpha, dt) {
+  const img = S[e.spr], w = img.width * scale, h = img.height * scale;
+  if (e.frozen) {
+    ICE_T[e.spr] = ICE_T[e.spr] || tint(img, '#8fd3ff');
+    ctx.globalAlpha = 0.55 * alpha; spriteAt(ICE_T[e.spr], cx, feetY, scale, true);
+    // The block of ice around it.
+    const x = Math.round(cx - w / 2) - 3, y = Math.round(feetY - h) - 3, bw = w + 6, bh = h + 6;
+    ctx.globalAlpha = 0.25 * alpha; ctx.fillStyle = '#c8f4ff'; ctx.fillRect(x, y, bw, bh);
+    ctx.globalAlpha = 0.9 * alpha; ctx.fillStyle = '#e8f8ff';
+    ctx.fillRect(x, y, bw, 1); ctx.fillRect(x, y + bh - 1, bw, 1); ctx.fillRect(x, y, 1, bh); ctx.fillRect(x + bw - 1, y, 1, bh);
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(x + 3, y + 3, 6, 2); ctx.fillRect(x + 3, y + 3, 2, 6);
+    ctx.fillRect(x + bw - 6, y + bh - 9, 2, 5);
+    ctx.globalAlpha = 1;
+    if (Math.random() < dt * 8) emitElement('ice', x + Math.random() * bw, y + Math.random() * bh, true);
+  }
+  if (e.burn) {
+    FIRE_T[e.spr] = FIRE_T[e.spr] || tint(img, '#ff8a2a');
+    ctx.globalAlpha = (0.4 + 0.2 * Math.sin(time * 20)) * alpha; spriteAt(FIRE_T[e.spr], cx, feetY, scale, true);
+    ctx.globalAlpha = 1;
+    let n = dt * 90;
+    for (; n > 0; n--) if (n >= 1 || Math.random() < n)
+      emitElement('fire', cx - w / 2 + Math.random() * w, feetY - Math.random() * h * 0.8);
   }
 }
 
@@ -1605,14 +2775,20 @@ function renderMastery() {
     mTabs.appendChild(t);
   }
   mList.innerHTML = '';
+  const now = practiceSet(masteryGrade);
+  if (now.length) {
+    const head = document.createElement('h3'); head.textContent = 'Practicing now';
+    const grid = document.createElement('div'); grid.className = 'mgrid';
+    for (const w of now) grid.appendChild(masteryCard(w));
+    mList.append(head, grid);
+  }
   const seen = new Set();
   let total = 0, mastered = 0;
   for (const [lvl, entries] of Object.entries(WORDS[masteryGrade] || WORDS[2])) {
     const words = entries.map(e => e[0]).filter(w => !seen.has(w) && seen.add(w));
     if (!words.length) continue;
     const head = document.createElement('h3');
-    const L = LEVELS[lvl - 1];
-    head.textContent = L ? `Level ${lvl}: ${L.name}` : `Level ${lvl}`;
+    head.textContent = `Word list ${lvl}`;
     const grid = document.createElement('div'); grid.className = 'mgrid';
     for (const w of words) {
       grid.appendChild(masteryCard(w));
@@ -1644,7 +2820,7 @@ function startGame(lvl = 1, prog = null, g = null) {
 }
 function savedProgress() {
   const p = save.progress;
-  if (!p || !(p.level >= 1 && p.level <= LAST_LEVEL) || !WEAPONS[p.weapon]) return null;
+  if (!p || !(p.level >= 1 && p.level <= LAST_LEVEL)) return null;
   return { ...p, grade: GRADES.includes(p.grade) ? p.grade : 2 };
 }
 const HOW_TO = 'Walk with <b>W A S D</b> (or arrows) or <b>click</b> where to go.<br>' +
@@ -1652,7 +2828,8 @@ const HOW_TO = 'Walk with <b>W A S D</b> (or arrows) or <b>click</b> where to go
   'Listen to the word, then <b>type</b> it (or click the letters) and press <b>Enter</b> to swing your sword.<br>' +
   'Spell it wrong and you miss &mdash; the monster hits you!<br>' +
   '<b>Tab</b> repeats the word.<br>Spell it before the <b>timer</b> runs out for double damage!<br>' +
-  'Spell a word right <b>5 times</b> to master it. A miss takes away 1.';
+  'You practice <b>5 words</b> at a time. Spell a word right <b>5 times</b> to master it (a miss takes away 1), ' +
+  'and a new word takes its place.';
 function showSplash() {
   state = 'title';
   showMenu('Spelling Knight', '<span class="blink">Press any button to continue</span>', []);
@@ -1688,6 +2865,44 @@ function showLevelSelect(g) {
   ]);
   return false;
 }
+// ---------- pause ----------
+const pauseBtn = document.getElementById('pauseBtn');
+pauseBtn.onclick = () => { pauseBtn.blur(); pauseGame(); };
+let pausedFrom = null;
+function pauseGame() {
+  if (state !== 'explore' && state !== 'combat') return;
+  pausedFrom = state; state = 'paused';
+  for (const k in keys) keys[k] = false;
+  target = null; say('');
+  showPauseMenu();
+}
+function showPauseMenu() {
+  showMenu('Paused', 'Take a break, brave knight!', [
+    { label: 'Resume', fn: resumeGame },
+    // The mastery list shows spellings, so not in the middle of a fight.
+    ...(pausedFrom === 'explore' ? [{ label: 'Word Mastery', fn: openMastery }] : []),
+    { label: 'How to Play', fn: () => { showMenu('How to Play', HOW_TO, [{ label: 'Back', back: true, fn: () => { showPauseMenu(); return false; } }]); return false; } },
+    { label: 'Main Menu', back: true, fn: confirmQuit },
+  ]);
+}
+function resumeGame() {
+  if (state !== 'paused') return;
+  state = pausedFrom; pausedFrom = null;
+  if (state === 'combat' && combat && !combat.locked) say(combat.word);
+}
+function confirmQuit() {
+  const p = savedProgress();
+  showMenu('Leave this game?', p ? `Load Save will start you at the last campfire (Level ${p.level}).`
+    : 'Your gold and dress-up items are kept.', [
+    { label: 'Keep Playing', fn: resumeGame },
+    { label: 'Yes, Main Menu', back: true, fn: () => {
+      panel.hidden = true; combat = null; pausedFrom = null; cfx = []; fixEl.hidden = true; fixDone = null; masteredEl.hidden = true; masteredDone = null;
+      resetRun(); state = 'title'; showMainMenu(); return false;
+    } },
+  ]);
+  return false;
+}
+
 function showHowTo() {
   showMenu('How to Play', HOW_TO, [{ label: 'Back', back: true, fn: () => { showMainMenu(); return false; } }]);
   return false;
@@ -1724,6 +2939,17 @@ function spriteAt(img, cx, feetY, scale = 1, flip = false) {
   ctx.restore();
 }
 
+// One segment per heart, so kids can still count how many hits are left.
+function drawBossBar(x, y, w, h, n, max) {
+  x = Math.round(x); y = Math.round(y);
+  ctx.fillStyle = '#1a1c2c'; ctx.fillRect(x - 1, y - 1, w + 2, h + 2);
+  const seg = w / max;
+  for (let i = 0; i < max; i++) {
+    const sx = Math.round(x + i * seg), ex = Math.round(x + (i + 1) * seg) - 1;
+    ctx.fillStyle = i < n ? '#ff3b3b' : '#4a2030'; ctx.fillRect(sx, y, ex - sx, h);
+    if (i < n) { ctx.fillStyle = '#ff9a9a'; ctx.fillRect(sx, y, ex - sx, 1); }
+  }
+}
 function drawHearts(x, y, n, max, sprite = 'heart') {
   for (let i = 0; i < max; i++) ctx.drawImage(i < n ? S[sprite] : S.heartEmpty, x + i * 9, y);
 }
@@ -1741,7 +2967,7 @@ function drawInventory() {
 
   const s = AVATAR.s, x = AVATAR.x - s - 4, y = AVATAR.y;
   slotBox(x, y, s);
-  const spr = WEAPONS[player.weapon].normal;
+  const spr = WEAPONS[save.look.weapon].normal;
   ctx.save();
   ctx.translate(x + s / 2, y + s / 2);
   ctx.rotate(Math.PI / 4);
@@ -1832,12 +3058,14 @@ function drawExplore() {
   drawRoom();
   const items = enemies.map(e => ({ y: e.y, draw() {
     const bob = Math.round(Math.sin(time * 4 + e.bob)) - (e.wake > 0 ? Math.round(Math.abs(Math.sin(time * 14)) * 5) : 0);
-    spriteAt(S[e.spr], e.x + 8, e.y + 16 + (e.fly ? bob * 2 - 4 : 0) + (e.wake > 0 ? bob : 0), e.spr === 'king' ? 1.5 : 1);
-    if (e.maxHp > 1) drawHearts(e.x + 8 - (e.maxHp * 9) / 2 + 1, e.y - 8, e.hp, e.maxHp);
+    spriteAt(S[e.spr], e.x + 8, e.y + 16 + (e.fly ? bob * 2 - 4 : 0) + (e.wake > 0 ? bob : 0), e.boss ? 2 : 1);
+    if (e.boss) drawBossBar(e.x + 8 - 20, e.y - 24, 40, 4, e.hp, e.maxHp);
+    else if (e.maxHp > 1) drawHearts(e.x + 8 - (e.maxHp * 9) / 2 + 1, e.y - 8, e.hp, e.maxHp);
   } }));
   if (chest) items.push({ y: chest.y + 10, draw: drawChest });
   for (const p of props) items.push({ y: p.y + 14, draw: () => drawProp(p) });
   if (campfire) items.push({ y: campfire.y + 6, draw: drawCampfire });
+  items.push({ y: pet.y, draw: () => drawPet(pet.x + 8, pet.y + 16, 1, pet.moving, pet.face) });
   items.push({ y: player.y, draw() {
     const bob = player.moving ? Math.round(Math.abs(Math.sin(time * 14))) : Math.round(Math.sin(time * 3) * 0.5 + 0.5);
     const frame = player.moving ? WALK[Math.floor(time * 9) % 4] : 'idle';
@@ -1867,20 +3095,41 @@ function drawCombat(dt) {
   ctx.fillStyle = TH.dim; ctx.fillRect(0, 0, W, 80);
   drawTorch(60, 30); drawTorch(260, 30); drawTorch(160, 22);
 
-  const feetY = 100, kx0 = 60, ex0 = 245;
-  let kx = kx0, ex = ex0, kVar = 'normal', kAng = 0.35, eImg = S[e.spr], ealpha = 1, ey = feetY, slash = 0, shake = 0;
+  const feetY = C_FEET, kx0 = C_KX, ex0 = C_EX;
+  const weapon = WEAPONS[save.look.weapon], ranged = weapon.attack === 'shoot', thrust = weapon.attack === 'thrust';
+  let kx = kx0, ex = ex0, kVar = 'normal', kAng = 0.35, eImg = S[e.spr], ealpha = 1, ey = feetY, slash = 0, shake = 0, shotX = null;
   const a = c.anim;
   if (a) {
     a.t += dt;
+    if (a.element && !a.landed && a.t > 0.17) { a.landed = true; landElement(e, a.element); }
     if (a.kind === 'hit') {
       const p = Math.min(1, a.t / 0.35);
-      kx = kx0 + Math.sin(p * Math.PI) * 120;
-      kAng = a.t < 0.2 ? -0.9 + 2.9 * (a.t / 0.2) : 2.0 - Math.min(1, (a.t - 0.2) / 0.4) * 1.65;
-      if (a.t > 0.17 && a.t < 0.55) { eImg = WHITE[e.spr]; shake = Math.round(Math.sin(a.t * 80) * 3); slash = a.t - 0.17; }
+      if (ranged) {
+        // Stands still and fires; the shot lands when a swing would.
+        kAng = 0;
+        if (a.t < 0.17) shotX = kx0 + 20 + (ex0 - kx0 - 40) * (a.t / 0.17);
+      } else if (thrust) {
+        // A shorter lunge, since the reach does the work, with the point level at the enemy.
+        kx = kx0 + Math.sin(p * Math.PI) * 90;
+        kAng = a.t < 0.12 ? 0.35 + (Math.PI / 2 - 0.35) * (a.t / 0.12)
+          : Math.PI / 2 - Math.min(1, Math.max(0, a.t - 0.3) / 0.3) * (Math.PI / 2 - 0.35);
+      } else {
+        kx = kx0 + Math.sin(p * Math.PI) * 120;
+        kAng = a.t < 0.2 ? -0.9 + 2.9 * (a.t / 0.2) : 2.0 - Math.min(1, (a.t - 0.2) / 0.4) * 1.65;
+      }
+      if (a.t > 0.17 && a.t < 0.55) {
+        eImg = WHITE[e.spr]; shake = Math.round(Math.sin(a.t * 80) * 3);
+        if (!ranged) slash = a.t - 0.17;
+      }
     } else if (a.kind === 'miss') {
       const p = Math.min(1, a.t / 0.5);
-      ex = e.wall ? ex0 : ex0 - Math.sin(p * Math.PI) * 150;
-      if (!e.wall && a.t > 0.25 && a.t < 0.7) { kVar = 'red'; kAng = 1.0; kx += Math.round(Math.sin(a.t * 80) * 3); }
+      // A frozen monster only struggles in its ice.
+      if (a.blocked) ex = ex0 + (a.t > 0.2 && a.t < 0.8 ? Math.round(Math.sin(a.t * 70) * 2) : 0);
+      else ex = e.wall ? ex0 : ex0 - Math.sin(p * Math.PI) * 150;
+      if (!e.wall && !a.blocked && a.t > 0.25 && a.t < 0.7) { kVar = 'red'; kAng = 1.0; kx += Math.round(Math.sin(a.t * 80) * 3); }
+    } else if (a.kind === 'burn') {
+      if (Math.floor(a.t * 16) % 2) eImg = RED[e.spr];
+      shake = Math.round(Math.sin(a.t * 60) * 2);
     } else if (a.kind === 'die') {
       ealpha = 1 - a.t / a.dur; ey += a.t * 14;
       if (Math.floor(a.t * 20) % 2) eImg = WHITE[e.spr];
@@ -1889,18 +3138,42 @@ function drawCombat(dt) {
   }
   const idle = Math.round(Math.sin(time * 3) * 0.5 + 0.5);
   const es = e.scale;
-  drawKnight(kx, feetY - idle, 2, false, a && a.kind === 'hit' ? WALK[Math.floor(a.t * 14) % 4] : 'idle', kAng, kVar);
+  const cheer = a && a.kind === 'hit' && a.t < 0.6 ? Math.round(Math.abs(Math.sin(a.t * 12)) * 6) : 0;
+  drawPet(kx0 - 36, feetY - cheer, 2, false, 1);
+  drawKnight(kx, feetY - idle, 2, false, a && a.kind === 'hit' && !ranged ? WALK[Math.floor(a.t * 14) % 4] : 'idle', kAng, kVar);
+  const eFeet = ey - (e.fly ? 8 : 0) - (e.frozen ? 0 : idle);
   ctx.globalAlpha = Math.max(0, ealpha);
-  spriteAt(eImg, ex + shake, ey - (e.fly ? 8 : 0) - idle, es, true);
+  spriteAt(eImg, ex + shake, eFeet, es, true);
   ctx.globalAlpha = 1;
+  if ((e.frozen || e.burn) && !(a && a.kind === 'die')) drawStatus(e, ex + shake, eFeet, es, 1, dt);
+  if (weapon.element) {
+    // Sparkles or flames along the weapon: a few at rest, a stream while swinging.
+    const hand = (CREATURES[save.look.creature] || {}).hand || HAND;
+    const hx = kx + (hand.x - KNIGHT_W / 2) * 2, hy = feetY - idle - KNIGHT_H * 2 + hand.y * 2, L = weapon.grip.y * 2;
+    const swinging = a && a.kind === 'hit' && !ranged && a.t < 0.6;
+    for (let n = (swinging ? 150 : 12) * dt; n > 0; n--) if (n >= 1 || Math.random() < n) {
+      const f = 0.45 + Math.random() * 0.55;
+      emitElement(weapon.element, hx + Math.sin(kAng) * L * f, hy - Math.cos(kAng) * L * f, !swinging && weapon.element === 'ice');
+    }
+    if (shotX !== null) for (let i = 0; i < 3; i++) emitElement(weapon.element, shotX + Math.random() * 4, feetY - 16 + (Math.random() - .5) * 4);
+  }
   if (slash > 0) {
     ctx.fillStyle = '#fff';
-    for (let i = 0; i < 14; i++) ctx.fillRect(ex - 28 + i * 3, 36 + i * 3, 4, 4);
+    // A thrust leaves a straight streak; everything else a diagonal slash.
+    if (thrust) ctx.fillRect(ex - 30, 74, 42, 4);
+    else for (let i = 0; i < 14; i++) ctx.fillRect(ex - 28 + i * 3, 36 + i * 3, 4, 4);
   }
+  if (shotX !== null) ctx.drawImage(weapon.shot, Math.round(shotX), feetY - 18);
+  drawCfx(dt);
   drawHearts(4, 4, player.hp, MAX_HP);
   drawInventory();
-  txt(e.name.toUpperCase(), ex0, 4, '#fff', 8, 'center');
-  drawHearts(ex0 - (e.maxHp * 9) / 2 + 1, 15, Math.max(0, e.hp), e.maxHp);
+  if (e.boss) {
+    txt('BOSS: ' + e.name.toUpperCase(), W / 2, 4, '#ff6b6b', 8, 'center');
+    drawBossBar(W / 2 - 60, 15, 120, 7, Math.max(0, e.hp), e.maxHp);
+  } else {
+    txt(e.name.toUpperCase(), ex0, 4, '#fff', 8, 'center');
+    drawHearts(ex0 - (e.maxHp * 9) / 2 + 1, 15, Math.max(0, e.hp), e.maxHp);
+  }
 
   floaters.forEach(f => {
     f.t += dt;
@@ -1919,8 +3192,10 @@ function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now; time += dt;
   ctx.fillStyle = '#0d0e17'; ctx.fillRect(0, 0, W, H);
   masteryBtn.hidden = state !== 'explore';   // the list shows spellings, so never during a fight
+  pauseBtn.hidden = state !== 'explore' && state !== 'combat';
   if (state === 'explore') { updateExplore(dt); if (state === 'explore') drawExplore(); }
   if (state === 'combat') drawCombat(dt);
+  if (state === 'paused') { if (pausedFrom === 'combat' && combat) drawCombat(0); else drawExplore(); }   // frozen in place
   if (state === 'menu') { drawExplore(); renderPreview(); }
   if (state === 'over' || state === 'win') { if (combat === null && enemies) drawExplore(); }
   if (state === 'title') { buildTitleBackdrop(); }
